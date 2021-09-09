@@ -6,6 +6,7 @@ class CircleButton extends StatelessWidget {
   final double iconSize;
   final void Function()? onPressed;
   final bool faIcon;
+  final double radius;
 
   const CircleButton({
     Key? key,
@@ -13,11 +14,14 @@ class CircleButton extends StatelessWidget {
     required this.iconSize,
     required this.onPressed,
     required this.faIcon,
+    required this.radius,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: radius,
+      height: radius,
       margin: const EdgeInsets.all(6.0),
       decoration: BoxDecoration(
         color: Colors.grey[200],

@@ -8,6 +8,14 @@ ThemeData myLightTheme(BuildContext context) {
     scaffoldBackgroundColor: Palette.scaffold,
     focusColor: Colors.black,
     appBarTheme: _appBarTheme(context),
+    tabBarTheme: _tabBarTheme(),
+  );
+}
+
+TabBarTheme _tabBarTheme() {
+  return TabBarTheme(
+    unselectedLabelColor: Colors.grey,
+    labelColor: Palette.facebookBlue,
   );
 }
 
@@ -26,7 +34,7 @@ AppBarTheme _appBarTheme(context) {
       fontWeight: FontWeight.bold,
       letterSpacing: -1.2,
     ),
-    iconTheme: IconThemeData(color: Colors.black, size: 30.0),
+    iconTheme: IconThemeData(color: Colors.black),
   );
 }
 
