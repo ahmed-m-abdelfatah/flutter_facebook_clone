@@ -49,14 +49,13 @@ class HomeLayout extends StatelessWidget {
       child: DefaultTabController(
         length: _tabs.length,
         child: Scaffold(
-          body: NestedScrollView(
-            headerSliverBuilder: (context, innerBoxIsScrolled) {
-              return [
-                _buildSliverAppBar(),
-              ];
-            },
-            // slivers:
-            body: _buildBody(),
+          body: CustomScrollView(
+            slivers: [
+              _buildSliverAppBar(),
+              SliverFillRemaining(
+                child: _buildBody(),
+              )
+            ],
           ),
         ),
       ),
@@ -93,10 +92,10 @@ class HomeLayout extends StatelessWidget {
     );
   }
 
-  Widget _buildBody() => Container(
-        child: TabBarView(
-          children: _tabs,
-          dragStartBehavior: DragStartBehavior.start,
-        ),
-      );
+  Widget _buildBody() {
+    return TabBarView(
+      children: _tabs,
+      dragStartBehavior: DragStartBehavior.start,
+    );
+  }
 }
