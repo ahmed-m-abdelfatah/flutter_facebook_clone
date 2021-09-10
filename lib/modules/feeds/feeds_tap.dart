@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_clone/models/models.dart';
 import 'package:flutter_facebook_clone/shared/components/widgets.dart';
 import 'package:flutter_facebook_clone/shared/network/local/repository/repository.dart';
 
@@ -7,7 +8,8 @@ class FeedsTap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
       child: Column(
         children: [
           CreatePostContainer(currentUser: currentUser),
@@ -15,6 +17,30 @@ class FeedsTap extends StatelessWidget {
           Rooms(onlineUsers: onlineUsers),
           const SizedBox(height: 10.0),
           Stories(currentUser: currentUser, stories: stories),
+          const SizedBox(height: 10.0),
+          ListView.separated(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              PostModel post = posts[index];
+              return PostContainer(post: post);
+            },
+            separatorBuilder: (context, index) {
+              return const SizedBox(height: 10.0);
+            },
+            itemCount: posts.length,
+          ),
+          const SizedBox(
+            height: 10.0,
+            child: Center(
+              child: Icon(
+                Icons.more_horiz_sharp,
+                color: Colors.black54,
+                size: 22.0,
+              ),
+            ),
+          ),
+          const SizedBox(height: 10.0),
         ],
       ),
     );

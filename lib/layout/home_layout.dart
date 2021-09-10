@@ -29,14 +29,14 @@ class HomeLayout extends StatelessWidget {
         border: Border.all(color: Colors.grey, width: 2.0),
       ),
       child: Tab(
-        icon: Icon(Icons.groups_sharp, size: 25.0),
+        icon: Icon(Icons.groups_sharp, size: 20.0),
       ),
     ),
-    Tab(icon: Icon(Icons.account_circle_outlined, size: 25.0)),
+    Tab(icon: Icon(Icons.account_circle_outlined, size: 27.0)),
     Tab(
       icon: Transform.rotate(
         angle: -15 * (pi / 180),
-        child: Icon(Icons.notifications, size: 25.0),
+        child: Icon(Icons.notifications, size: 23.0),
       ),
     ),
     Tab(icon: Icon(Icons.menu, size: 25.0))
@@ -86,6 +86,8 @@ class HomeLayout extends StatelessWidget {
   }
 
   Widget _buildBody() {
-    return TabBarView(children: _tabs);
+    return TabBarView(
+      children: _tabs,
+    );
   }
 }

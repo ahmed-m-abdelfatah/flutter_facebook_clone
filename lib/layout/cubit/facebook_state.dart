@@ -4,3 +4,5 @@ part of 'facebook_cubit.dart';
 abstract class FacebookState {}
 
 class FacebookInitial extends FacebookState {}
+
+class ChangeTabBar extends FacebookState {}
