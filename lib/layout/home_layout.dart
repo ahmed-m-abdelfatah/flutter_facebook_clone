@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_clone/modules/feeds/feeds_tap.dart';
 import 'package:flutter_facebook_clone/modules/groups/groups_tap.dart';
@@ -49,53 +48,44 @@ class HomeLayout extends StatelessWidget {
       child: DefaultTabController(
         length: _tabs.length,
         child: Scaffold(
-          body: CustomScrollView(
-            slivers: [
-              _buildSliverAppBar(),
-              SliverFillRemaining(
-                child: _buildBody(),
-              )
-            ],
-          ),
+          appBar: _buildAppBar(),
+          body: _buildBody(),
         ),
       ),
     );
   }
 
-  SliverAppBar _buildSliverAppBar() {
-    return SliverAppBar(
-      pinned: true,
-      floating: true,
-      snap: true,
-      title: const Text('Facebook'),
-      toolbarHeight: 80.0,
-      actions: [
-        CircleButton(
-          radius: 35.0,
-          faIcon: false,
-          icon: Icons.search,
-          iconSize: 20.0,
-          onPressed: () => print('Search'),
+  PreferredSize _buildAppBar() {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(120.0),
+      child: AppBar(
+        title: const Text('Facebook'),
+        toolbarHeight: 80.0,
+        actions: [
+          CircleButton(
+            radius: 35.0,
+            faIcon: false,
+            icon: Icons.search,
+            iconSize: 20.0,
+            onPressed: () => print('Search'),
+          ),
+          CircleButton(
+            radius: 35.0,
+            faIcon: true,
+            icon: FontAwesomeIcons.facebookMessenger,
+            iconSize: 20.0,
+            onPressed: () => print('messenger'),
+          ),
+        ],
+        bottom: TabBar(
+          indicatorColor: Palette.facebookBlue,
+          tabs: _tabsIcons,
         ),
-        CircleButton(
-          radius: 35.0,
-          faIcon: true,
-          icon: FontAwesomeIcons.facebookMessenger,
-          iconSize: 20.0,
-          onPressed: () => print('messenger'),
-        ),
-      ],
-      bottom: TabBar(
-        indicatorColor: Palette.facebookBlue,
-        tabs: _tabsIcons,
       ),
     );
   }
 
   Widget _buildBody() {
-    return TabBarView(
-      children: _tabs,
-      dragStartBehavior: DragStartBehavior.start,
-    );
+    return TabBarView(children: _tabs);
   }
 }
