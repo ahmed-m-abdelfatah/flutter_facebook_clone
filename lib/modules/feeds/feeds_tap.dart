@@ -13,6 +13,8 @@ class FeedsTap extends StatelessWidget {
           CreatePostContainer(currentUser: currentUser),
           const SizedBox(height: 10.0),
           Rooms(onlineUsers: onlineUsers),
+          const SizedBox(height: 10.0),
+          Stories(currentUser: currentUser, stories: stories),
         ],
       ),
     );

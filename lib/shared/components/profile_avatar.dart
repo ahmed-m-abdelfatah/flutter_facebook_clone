@@ -20,10 +20,14 @@ class ProfileAvatar extends StatelessWidget {
       alignment: Alignment.bottomRight,
       children: [
         CircleAvatar(
+          backgroundColor: Palette.facebookBlue,
           radius: 20.0,
-          backgroundColor: Colors.grey[200],
-          backgroundImage: CachedNetworkImageProvider(
-            profileImageUrl,
+          child: CircleAvatar(
+            radius: hasBorder ? 17.0 : 20.0,
+            backgroundColor: Colors.grey[200],
+            backgroundImage: CachedNetworkImageProvider(
+              profileImageUrl,
+            ),
           ),
         ),
         if (isActive)
