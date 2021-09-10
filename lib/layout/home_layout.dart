@@ -1,61 +1,38 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/modules/feeds/feeds_tap.dart';
-import 'package:flutter_facebook_clone/modules/groups/groups_tap.dart';
-import 'package:flutter_facebook_clone/modules/menu/menu_tap.dart';
-import 'package:flutter_facebook_clone/modules/notifications/notifications_tap.dart';
-import 'package:flutter_facebook_clone/modules/profile/profile_tap.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_facebook_clone/layout/cubit/facebook_cubit.dart';
 import 'package:flutter_facebook_clone/shared/components/widgets.dart';
+import 'package:flutter_facebook_clone/shared/network/local/repository/repository.dart';
 import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeLayout extends StatelessWidget {
   HomeLayout({Key? key}) : super(key: key);
 
-  final List<Widget> _tabs = [
-    FeedsTap(),
-    GroupsTap(),
-    ProfileTap(),
-    NotificationsTap(),
-    MenuTap(),
-  ];
-
-  final List<Widget> _tabsIcons = [
-    Tab(icon: Icon(Icons.home, size: 25.0)),
-    Container(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: Colors.grey, width: 2.0),
-      ),
-      child: Tab(
-        icon: Icon(Icons.groups_sharp, size: 20.0),
-      ),
-    ),
-    Tab(icon: Icon(Icons.account_circle_outlined, size: 27.0)),
-    Tab(
-      icon: Transform.rotate(
-        angle: -15 * (pi / 180),
-        child: Icon(Icons.notifications, size: 23.0),
-      ),
-    ),
-    Tab(icon: Icon(Icons.menu, size: 25.0))
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: DefaultTabController(
-        length: _tabs.length,
-        child: Scaffold(
-          appBar: _buildAppBar(),
-          body: _buildBody(),
-        ),
-      ),
+    final Size screenSize = MediaQuery.of(context).size;
+
+    return BlocConsumer<FacebookCubit, FacebookState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        FacebookCubit cubit = FacebookCubit.get(context);
+        return SafeArea(
+          child: DefaultTabController(
+            length: cubit.tabs.length,
+            child: Scaffold(
+              appBar: !Responsive.isDesktop(context)
+                  ? _buildAppBar(cubit)
+                  : _buildAppBarDesktop(screenSize, cubit),
+              body: _buildBody(cubit),
+            ),
+          ),
+        );
+      },
     );
   }
 
-  PreferredSize _buildAppBar() {
+  PreferredSize _buildAppBar(cubit) {
     return PreferredSize(
       preferredSize: Size.fromHeight(120.0),
       child: AppBar(
@@ -79,15 +56,27 @@ class HomeLayout extends StatelessWidget {
         ],
         bottom: TabBar(
           indicatorColor: Palette.facebookBlue,
-          tabs: _tabsIcons,
+          tabs: cubit.tabsIcons,
         ),
       ),
     );
   }
 
-  Widget _buildBody() {
+  PreferredSize _buildAppBarDesktop(screenSize, cubit) {
+    return PreferredSize(
+      preferredSize: Size(screenSize.width, 100),
+      child: CustomAppBar(
+        currentUser: currentUser,
+        icons: cubit.tabsIcons,
+        currentIndex: cubit.currentIndex,
+        onTap: cubit.changeTabBar,
+      ),
+    );
+  }
+
+  Widget _buildBody(cubit) {
     return TabBarView(
-      children: _tabs,
+      children: cubit.tabs,
     );
   }
 }
