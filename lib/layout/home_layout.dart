@@ -23,7 +23,10 @@ class HomeLayout extends StatelessWidget {
             appBar: !Responsive.isDesktop(context)
                 ? _buildAppBar()
                 : _buildAppBarDesktop(screenSize),
-            body: TabBarView(children: MyConstants.tabs),
+            body: Responsive(
+              mobile: _buildHomeScreen(),
+              desktop: _buildHomeScreenDesktop(),
+            ),
           ),
         ),
       ),
@@ -67,6 +70,34 @@ class HomeLayout extends StatelessWidget {
         currentUser: currentUser,
         icons: MyConstants.tabsIcons,
       ),
+    );
+  }
+
+  TabBarView _buildHomeScreen() => TabBarView(children: MyConstants.tabs);
+
+  Widget _buildHomeScreenDesktop() {
+    return Row(
+      children: [
+        Flexible(
+          flex: 2,
+          child: Container(
+            color: Colors.orange,
+          ),
+        ),
+        const Spacer(),
+        Container(
+          width: 600.0, // container -> w600 {custom tap bar}
+          color: Colors.orange,
+          child: _buildHomeScreen(),
+        ),
+        const Spacer(),
+        Flexible(
+          flex: 2,
+          child: Container(
+            color: Colors.orange,
+          ),
+        ),
+      ],
     );
   }
 }

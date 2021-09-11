@@ -16,34 +16,43 @@ class PostContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: Colors.white,
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  _PostHeader(post: post),
-                  const SizedBox(height: 4.0),
-                  Text(post.caption),
-                  if (post.imageUrl != null) const SizedBox(height: 10.0),
-                ],
-              ),
-            ),
-            if (post.imageUrl != null)
+    bool isDesktop = Responsive.isDesktop(context);
+
+    return Card(
+      margin: EdgeInsets.symmetric(horizontal: isDesktop ? 5.0 : 0.0),
+      elevation: isDesktop ? 1.0 : 0.0,
+      shape: isDesktop
+          ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
+          : null,
+      child: Container(
+          color: Colors.white,
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Column(
+            children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: CachedNetworkImage(imageUrl: post.imageUrl!),
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    _PostHeader(post: post),
+                    const SizedBox(height: 4.0),
+                    Text(post.caption),
+                    if (post.imageUrl != null) const SizedBox(height: 10.0),
+                  ],
+                ),
               ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: _PostStats(post: post),
-            ),
-          ],
-        ));
+              if (post.imageUrl != null)
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: CachedNetworkImage(imageUrl: post.imageUrl!),
+                ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: _PostStats(post: post),
+              ),
+            ],
+          )),
+    );
   }
 }
 
