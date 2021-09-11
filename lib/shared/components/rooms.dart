@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/models/user_model.dart';
-import 'package:flutter_facebook_clone/shared/components/widgets.dart';
-import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
+
+import '../../models/user_model.dart';
+import '../styles/my_main_styles.dart';
+import 'widgets.dart';
 
 class Rooms extends StatelessWidget {
   final List<UserModel> onlineUsers;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
+
+import 'my_main_styles.dart';
 
 ThemeData myLightTheme(BuildContext context) {
   return ThemeData(

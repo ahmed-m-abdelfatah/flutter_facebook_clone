@@ -22,10 +22,9 @@ environment:
 
 dependencies:
   cached_network_image: ^3.1.0
-  cupertino_icons: ^1.0.2
+  carousel_slider: ^4.0.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.2.0
   font_awesome_flutter: ^9.1.0
 
 dev_dependencies:

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_facebook_clone/layout/cubit/facebook_cubit.dart';
-import 'package:flutter_facebook_clone/layout/home_layout.dart';
+
+import 'layout/home_layout.dart';
 
 class AppRouter {
   static const String startScreen = '/';
@@ -22,10 +21,7 @@ class AppRouter {
 
   static MaterialPageRoute<dynamic> _goToHomeLayout() {
     return MaterialPageRoute(
-      builder: (_) => BlocProvider(
-        create: (context) => FacebookCubit(),
-        child: HomeLayout(),
-      ),
+      builder: (_) => HomeLayout(),
     );
   }
 }

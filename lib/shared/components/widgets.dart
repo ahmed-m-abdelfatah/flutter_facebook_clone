@@ -7,3 +7,4 @@ export 'profile_avatar.dart';
 export 'responsive.dart';
 export 'rooms.dart';
 export 'stories.dart';
+export 'user_card.dart';

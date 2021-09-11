@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/models/user_model.dart';
-import 'package:flutter_facebook_clone/shared/components/widgets.dart';
-import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../models/user_model.dart';
+import '../styles/my_main_styles.dart';
+import 'widgets.dart';
 
 class CustomAppBar extends StatelessWidget {
   final UserModel currentUser;
   final List<Widget> icons;
-  final int currentIndex;
-  final Function(int) onTap;
 
   const CustomAppBar({
     Key? key,
     required this.currentUser,
     required this.icons,
-    required this.currentIndex,
-    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -50,18 +47,13 @@ class CustomAppBar extends StatelessWidget {
           Container(
             height: double.infinity,
             width: 600.0,
-            child: CustomTabBar(
-              icons: icons,
-              currentIndex: currentIndex,
-              onTap: onTap,
-              isBottomIndicator: true,
-            ),
+            child: CustomTabBar(icons: icons),
           ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                // UserCard(user: currentUser),
+                UserCard(currentUser: currentUser),
                 const SizedBox(width: 12.0),
                 CircleButton(
                   icon: Icons.search,

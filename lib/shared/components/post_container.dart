@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/models/models.dart';
-import 'package:flutter_facebook_clone/shared/components/widgets.dart';
-import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../models/models.dart';
+import '../styles/my_main_styles.dart';
+import 'widgets.dart';
 
 class PostContainer extends StatelessWidget {
   final PostModel post;
@@ -28,7 +29,7 @@ class PostContainer extends StatelessWidget {
                   _PostHeader(post: post),
                   const SizedBox(height: 4.0),
                   Text(post.caption),
-                  if (post.imageUrl != null) const SizedBox(height: 6.0),
+                  if (post.imageUrl != null) const SizedBox(height: 10.0),
                 ],
               ),
             ),
@@ -112,6 +113,7 @@ class _PostStats extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: 6.0),
         Row(
           children: [
             Container(

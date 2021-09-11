@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/models/models.dart';
-import 'package:flutter_facebook_clone/shared/components/widgets.dart';
-import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
+
+import '../../models/models.dart';
+import '../styles/my_main_styles.dart';
+import 'widgets.dart';
 
 class Stories extends StatelessWidget {
   final UserModel currentUser;

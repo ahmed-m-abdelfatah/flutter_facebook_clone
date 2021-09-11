@@ -1,4 +1,4 @@
-import 'package:flutter_facebook_clone/models/user_model.dart';
+import 'user_model.dart';
 
 class PostModel {
   final UserModel user;

@@ -1,4 +1,4 @@
-import 'package:flutter_facebook_clone/models/models.dart';
+import '../../../../models/models.dart';
 
 final UserModel currentUser = UserModel(
   name: 'Marcus Ng',
@@ -215,9 +215,9 @@ final List<PostModel> posts = [
     shares: 0,
   ),
   PostModel(
-    user: onlineUsers[0],
+    user: onlineUsers[3],
     caption:
-        'More placeholder text for the soul: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     timeAgo: '1d',
     imageUrl: null,
     likes: 482,

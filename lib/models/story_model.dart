@@ -1,4 +1,4 @@
-import 'package:flutter_facebook_clone/models/models.dart';
+import 'models.dart';
 
 class StoryModel {
   final UserModel user;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_facebook_clone/layout/cubit/facebook_cubit.dart';
-import 'package:flutter_facebook_clone/shared/components/widgets.dart';
-import 'package:flutter_facebook_clone/shared/network/local/repository/repository.dart';
-import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../shared/components/my_constants.dart';
+import '../shared/components/widgets.dart';
+import '../shared/network/local/repository/repository.dart';
+import '../shared/styles/my_main_styles.dart';
 
 class HomeLayout extends StatelessWidget {
   HomeLayout({Key? key}) : super(key: key);
@@ -13,26 +13,24 @@ class HomeLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
 
-    return BlocConsumer<FacebookCubit, FacebookState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        FacebookCubit cubit = FacebookCubit.get(context);
-        return SafeArea(
-          child: DefaultTabController(
-            length: cubit.tabs.length,
-            child: Scaffold(
-              appBar: !Responsive.isDesktop(context)
-                  ? _buildAppBar(cubit)
-                  : _buildAppBarDesktop(screenSize, cubit),
-              body: _buildBody(cubit),
-            ),
+    return SafeArea(
+      child: DefaultTabController(
+        length: MyConstants.tabs.length,
+        child: GestureDetector(
+          // tap any where to remove foucs from text field
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            appBar: !Responsive.isDesktop(context)
+                ? _buildAppBar()
+                : _buildAppBarDesktop(screenSize),
+            body: TabBarView(children: MyConstants.tabs),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 
-  PreferredSize _buildAppBar(cubit) {
+  PreferredSize _buildAppBar() {
     return PreferredSize(
       preferredSize: Size.fromHeight(120.0),
       child: AppBar(
@@ -56,27 +54,19 @@ class HomeLayout extends StatelessWidget {
         ],
         bottom: TabBar(
           indicatorColor: Palette.facebookBlue,
-          tabs: cubit.tabsIcons,
+          tabs: MyConstants.tabsIcons,
         ),
       ),
     );
   }
 
-  PreferredSize _buildAppBarDesktop(screenSize, cubit) {
+  PreferredSize _buildAppBarDesktop(screenSize) {
     return PreferredSize(
       preferredSize: Size(screenSize.width, 100),
       child: CustomAppBar(
         currentUser: currentUser,
-        icons: cubit.tabsIcons,
-        currentIndex: cubit.currentIndex,
-        onTap: cubit.changeTabBar,
+        icons: MyConstants.tabsIcons,
       ),
-    );
-  }
-
-  Widget _buildBody(cubit) {
-    return TabBarView(
-      children: cubit.tabs,
     );
   }
 }
