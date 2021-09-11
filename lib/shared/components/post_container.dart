@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../models/models.dart';
 import '../styles/my_main_styles.dart';
@@ -165,8 +166,8 @@ class _PostStats extends StatelessWidget {
         Row(
           children: [
             _PostButton(
-              icon: FaIcon(
-                FontAwesomeIcons.thumbsUp,
+              icon: Icon(
+                MdiIcons.thumbUpOutline,
                 color: Colors.grey[600],
                 size: 20.0,
               ),
@@ -174,8 +175,8 @@ class _PostStats extends StatelessWidget {
               onTap: () => print('Like'),
             ),
             _PostButton(
-              icon: FaIcon(
-                FontAwesomeIcons.comment,
+              icon: Icon(
+                MdiIcons.comment,
                 color: Colors.grey[600],
                 size: 20.0,
               ),
@@ -183,10 +184,10 @@ class _PostStats extends StatelessWidget {
               onTap: () => print('Comment'),
             ),
             _PostButton(
-              icon: FaIcon(
-                FontAwesomeIcons.shareSquare,
+              icon: Icon(
+                MdiIcons.shareOutline,
                 color: Colors.grey[600],
-                size: 20.0,
+                size: 25.0,
               ),
               label: 'Share',
               onTap: () => print('Share'),
@@ -199,7 +200,7 @@ class _PostStats extends StatelessWidget {
 }
 
 class _PostButton extends StatelessWidget {
-  final FaIcon icon;
+  final Icon icon;
   final String label;
   final Function onTap;
 

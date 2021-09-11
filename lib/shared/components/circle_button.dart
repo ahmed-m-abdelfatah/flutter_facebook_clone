@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CircleButton extends StatelessWidget {
   final IconData icon;
   final double iconSize;
   final void Function()? onPressed;
-  final bool faIcon;
   final double radius;
 
   const CircleButton({
@@ -13,7 +11,6 @@ class CircleButton extends StatelessWidget {
     required this.icon,
     required this.iconSize,
     required this.onPressed,
-    required this.faIcon,
     required this.radius,
   }) : super(key: key);
 
@@ -28,7 +25,7 @@ class CircleButton extends StatelessWidget {
         shape: BoxShape.circle,
       ),
       child: IconButton(
-        icon: faIcon ? FaIcon(icon) : Icon(icon),
+        icon: Icon(icon),
         iconSize: iconSize,
         color: Colors.black,
         onPressed: onPressed,

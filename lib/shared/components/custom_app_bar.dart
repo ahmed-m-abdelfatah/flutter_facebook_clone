@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../models/user_model.dart';
 import '../styles/my_main_styles.dart';
@@ -60,14 +61,12 @@ class CustomAppBar extends StatelessWidget {
                   iconSize: 30.0,
                   onPressed: () => print('Search'),
                   radius: 50.0,
-                  faIcon: false,
                 ),
                 CircleButton(
-                  icon: FontAwesomeIcons.facebookMessenger,
+                  icon: MdiIcons.facebookMessenger,
                   iconSize: 30.0,
                   onPressed: () => print('Messenger'),
                   radius: 50.0,
-                  faIcon: true,
                 ),
               ],
             ),

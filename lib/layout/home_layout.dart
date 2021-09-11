@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../shared/components/my_constants.dart';
 import '../shared/components/widgets.dart';
@@ -24,8 +25,8 @@ class HomeLayout extends StatelessWidget {
                 ? _buildAppBar()
                 : _buildAppBarDesktop(screenSize),
             body: Responsive(
-              mobile: _buildHomeScreen(),
-              desktop: _buildHomeScreenDesktop(),
+              mobile: _BuildHomeScreen(),
+              desktop: _BuildHomeScreenDesktop(),
             ),
           ),
         ),
@@ -42,15 +43,13 @@ class HomeLayout extends StatelessWidget {
         actions: [
           CircleButton(
             radius: 35.0,
-            faIcon: false,
             icon: Icons.search,
             iconSize: 20.0,
             onPressed: () => print('Search'),
           ),
           CircleButton(
             radius: 35.0,
-            faIcon: true,
-            icon: FontAwesomeIcons.facebookMessenger,
+            icon: MdiIcons.facebookMessenger,
             iconSize: 20.0,
             onPressed: () => print('messenger'),
           ),
@@ -72,29 +71,52 @@ class HomeLayout extends StatelessWidget {
       ),
     );
   }
+}
 
-  TabBarView _buildHomeScreen() => TabBarView(children: MyConstants.tabs);
+class _BuildHomeScreen extends StatelessWidget {
+  const _BuildHomeScreen({Key? key}) : super(key: key);
 
-  Widget _buildHomeScreenDesktop() {
+  @override
+  Widget build(BuildContext context) {
+    return TabBarView(children: MyConstants.tabs);
+  }
+}
+
+class _BuildHomeScreenDesktop extends StatelessWidget {
+  const _BuildHomeScreenDesktop({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       children: [
         Flexible(
           flex: 2,
-          child: Container(
-            color: Colors.orange,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: MoreOptionsList(currentUser: currentUser),
+            ),
           ),
         ),
         const Spacer(),
         Container(
           width: 600.0, // container -> w600 {custom tap bar}
           color: Colors.orange,
-          child: _buildHomeScreen(),
+          child: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
+            children: MyConstants.tabs,
+          ),
         ),
         const Spacer(),
         Flexible(
           flex: 2,
-          child: Container(
-            color: Colors.orange,
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: ContactsList(onlineUsers: onlineUsers),
+            ),
           ),
         ),
       ],
