@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:mdi/mdi.dart';
+
 // ignore: import_of_legacy_library_into_null_safe
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../models/models.dart';
 import '../styles/my_main_styles.dart';
@@ -167,7 +168,7 @@ class _PostStats extends StatelessWidget {
           children: [
             _PostButton(
               icon: Icon(
-                MdiIcons.thumbUpOutline,
+                Mdi.thumbUpOutline,
                 color: Colors.grey[600],
                 size: 20.0,
               ),
@@ -176,7 +177,7 @@ class _PostStats extends StatelessWidget {
             ),
             _PostButton(
               icon: Icon(
-                MdiIcons.comment,
+                Mdi.commentOutline,
                 color: Colors.grey[600],
                 size: 20.0,
               ),
@@ -185,7 +186,7 @@ class _PostStats extends StatelessWidget {
             ),
             _PostButton(
               icon: Icon(
-                MdiIcons.shareOutline,
+                Mdi.shareOutline,
                 color: Colors.grey[600],
                 size: 25.0,
               ),

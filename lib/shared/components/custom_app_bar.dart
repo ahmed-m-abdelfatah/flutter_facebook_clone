@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mdi/mdi.dart';
+
 // ignore: import_of_legacy_library_into_null_safe
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../models/user_model.dart';
 import '../styles/my_main_styles.dart';
@@ -63,7 +64,7 @@ class CustomAppBar extends StatelessWidget {
                   radius: 50.0,
                 ),
                 CircleButton(
-                  icon: MdiIcons.facebookMessenger,
+                  icon: Mdi.facebookMessenger,
                   iconSize: 30.0,
                   onPressed: () => print('Messenger'),
                   radius: 50.0,

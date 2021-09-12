@@ -22,10 +22,9 @@ environment:
 
 dependencies:
   cached_network_image: ^3.1.0
-  carousel_slider: ^4.0.0
+  mdi: ^5.0.0-nullsafety.0
   flutter:
     sdk: flutter
-  material_design_icons_flutter: ^5.0.5955-rc.1
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mdi/mdi.dart';
+
 // ignore: import_of_legacy_library_into_null_safe
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../shared/components/my_constants.dart';
 import '../shared/components/widgets.dart';
@@ -49,7 +50,7 @@ class HomeLayout extends StatelessWidget {
           ),
           CircleButton(
             radius: 35.0,
-            icon: MdiIcons.facebookMessenger,
+            icon: Mdi.facebookMessenger,
             iconSize: 20.0,
             onPressed: () => print('messenger'),
           ),
@@ -102,7 +103,7 @@ class _BuildHomeScreenDesktop extends StatelessWidget {
         const Spacer(),
         Container(
           width: 600.0, // container -> w600 {custom tap bar}
-          color: Colors.orange,
+          color: Colors.transparent,
           child: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: MyConstants.tabs,

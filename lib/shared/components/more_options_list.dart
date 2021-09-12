@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_clone/models/models.dart';
 import 'package:flutter_facebook_clone/shared/components/user_card.dart';
 import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:mdi/mdi.dart';
 
 class MoreOptionsList extends StatelessWidget {
   final List<List> _moreOptionsList = const [
-    [MdiIcons.shieldAccount, Colors.deepPurple, 'COVID-19 Info Center'],
-    [MdiIcons.accountMultiple, Colors.cyan, 'Friends'],
-    [MdiIcons.facebookMessenger, Palette.facebookBlue, 'Messenger'],
-    [MdiIcons.flag, Colors.orange, 'Pages'],
-    [MdiIcons.storefront, Palette.facebookBlue, 'Marketplace'],
+    [Mdi.shieldAccount, Colors.deepPurple, 'COVID-19 Info Center'],
+    [Mdi.accountMultiple, Colors.cyan, 'Friends'],
+    [Mdi.facebookMessenger, Palette.facebookBlue, 'Messenger'],
+    [Mdi.flag, Colors.orange, 'Pages'],
+    [Mdi.storefront, Palette.facebookBlue, 'Marketplace'],
     [Icons.ondemand_video, Palette.facebookBlue, 'Watch'],
-    [MdiIcons.calendarStar, Colors.red, 'Events'],
+    [Mdi.calendarStar, Colors.red, 'Events'],
   ];
 
   final UserModel currentUser;
