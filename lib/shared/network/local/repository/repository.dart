@@ -179,7 +179,6 @@ final List<PostModel> posts = [
     caption:
         'Please enjoy this placeholder text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     timeAgo: '3hr',
-    imageUrl: null,
     likes: 683,
     comments: 79,
     shares: 18,
@@ -209,7 +208,6 @@ final List<PostModel> posts = [
     caption:
         'More placeholder text for the soul: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     timeAgo: '1d',
-    imageUrl: null,
     likes: 42,
     comments: 7,
     shares: 0,
@@ -219,7 +217,6 @@ final List<PostModel> posts = [
     caption:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     timeAgo: '1d',
-    imageUrl: null,
     likes: 482,
     comments: 37,
     shares: 9,
@@ -230,6 +227,19 @@ final List<PostModel> posts = [
     timeAgo: '1d',
     imageUrl:
         'https://images.unsplash.com/reserve/OlxPGKgRUaX0E1hg3b3X_Dumbo.JPG?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    likes: 1523,
+    shares: 129,
+    comments: 301,
+  ),
+  PostModel(
+    user: onlineUsers[10],
+    caption: 'A classic.',
+    timeAgo: '1d',
+    imagesUrls: [
+      'http://unsplash.it/300/200?random&gravity=center',
+      'http://pipsum.com/200x300.jpg',
+      'http://unsplash.it/500?gravity=center'
+    ],
     likes: 1523,
     shares: 129,
     comments: 301,

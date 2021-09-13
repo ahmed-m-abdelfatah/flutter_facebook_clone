@@ -1,6 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_clone/shared/adaptive/adaptive_circular_progress_indicator.dart';
+import 'package:flutter_facebook_clone/shared/adaptive/operating_system.dart';
 import 'package:mdi/mdi.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:photo_view/photo_view_gallery.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
 
@@ -37,23 +41,60 @@ class PostContainer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     _PostHeader(post: post),
-                    const SizedBox(height: 4.0),
+                    const SizedBox(height: 8.0),
                     Text(post.caption),
-                    if (post.imageUrl != null) const SizedBox(height: 10.0),
+                    if (post.imageUrl != null && post.imagesUrls != null)
+                      const SizedBox(height: 10.0),
                   ],
                 ),
               ),
-              if (post.imageUrl != null)
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: CachedNetworkImage(imageUrl: post.imageUrl!),
-                ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: _PostStats(post: post),
-              ),
+              if (post.imageUrl != null) _photoContainer(),
+              if (post.imagesUrls != null) _photoGallery(),
+              _PostStats(post: post),
             ],
           )),
+    );
+  }
+
+  Padding _photoContainer() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: CachedNetworkImage(imageUrl: post.imageUrl!),
+    );
+  }
+
+  Padding _photoGallery() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: AspectRatio(
+        aspectRatio: 16 / 9,
+        child: ClipRect(
+          child: PhotoViewGallery.builder(
+            itemCount: post.imagesUrls!.length,
+            enableRotation: false,
+            backgroundDecoration: BoxDecoration(color: Colors.black45),
+            scrollPhysics: const BouncingScrollPhysics(),
+            loadingBuilder: (context, event) {
+              return Center(
+                child: AdaptiveCircularProgressIndicator(
+                  os: OperatingSystem.getOs(),
+                ),
+              );
+            },
+            builder: (context, index) {
+              return PhotoViewGalleryPageOptions(
+                imageProvider: NetworkImage(post.imagesUrls![index]),
+                minScale: PhotoViewComputedScale.contained * 0.8,
+                initialScale: PhotoViewComputedScale.contained * 1.0,
+                maxScale: PhotoViewComputedScale.covered * 2.0,
+                heroAttributes: PhotoViewHeroAttributes(
+                  tag: post.imagesUrls![index],
+                ),
+              );
+            },
+          ),
+        ),
+      ),
     );
   }
 }
@@ -122,80 +163,83 @@ class _PostStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 6.0),
-        Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(4.0),
-              decoration: BoxDecoration(
-                color: Palette.facebookBlue,
-                shape: BoxShape.circle,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Column(
+        children: [
+          const SizedBox(height: 6.0),
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(4.0),
+                decoration: BoxDecoration(
+                  color: Palette.facebookBlue,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.thumb_up,
+                  size: 10.0,
+                  color: Colors.white,
+                ),
               ),
-              child: Icon(
-                Icons.thumb_up,
-                size: 10.0,
-                color: Colors.white,
+              const SizedBox(width: 4.0),
+              Expanded(
+                child: Text(
+                  '${post.likes}',
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(width: 4.0),
-            Expanded(
-              child: Text(
-                '${post.likes}',
+              Text(
+                '${post.comments} Comments',
                 style: TextStyle(
                   color: Colors.grey[600],
                 ),
               ),
-            ),
-            Text(
-              '${post.comments} Comments',
-              style: TextStyle(
-                color: Colors.grey[600],
+              const SizedBox(width: 8.0),
+              Text(
+                '${post.shares} Shares',
+                style: TextStyle(
+                  color: Colors.grey[600],
+                ),
+              )
+            ],
+          ),
+          const Divider(),
+          Row(
+            children: [
+              _PostButton(
+                icon: Icon(
+                  Mdi.thumbUpOutline,
+                  color: Colors.grey[600],
+                  size: 20.0,
+                ),
+                label: 'Like',
+                onTap: () => print('Like'),
               ),
-            ),
-            const SizedBox(width: 8.0),
-            Text(
-              '${post.shares} Shares',
-              style: TextStyle(
-                color: Colors.grey[600],
+              _PostButton(
+                icon: Icon(
+                  Mdi.commentOutline,
+                  color: Colors.grey[600],
+                  size: 20.0,
+                ),
+                label: 'Comment',
+                onTap: () => print('Comment'),
               ),
-            )
-          ],
-        ),
-        const Divider(),
-        Row(
-          children: [
-            _PostButton(
-              icon: Icon(
-                Mdi.thumbUpOutline,
-                color: Colors.grey[600],
-                size: 20.0,
-              ),
-              label: 'Like',
-              onTap: () => print('Like'),
-            ),
-            _PostButton(
-              icon: Icon(
-                Mdi.commentOutline,
-                color: Colors.grey[600],
-                size: 20.0,
-              ),
-              label: 'Comment',
-              onTap: () => print('Comment'),
-            ),
-            _PostButton(
-              icon: Icon(
-                Mdi.shareOutline,
-                color: Colors.grey[600],
-                size: 25.0,
-              ),
-              label: 'Share',
-              onTap: () => print('Share'),
-            )
-          ],
-        )
-      ],
+              _PostButton(
+                icon: Icon(
+                  Mdi.shareOutline,
+                  color: Colors.grey[600],
+                  size: 25.0,
+                ),
+                label: 'Share',
+                onTap: () => print('Share'),
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 }
