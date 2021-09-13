@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/models/_models.dart';
-import 'package:flutter_facebook_clone/shared/components/widgets/_widgets.dart';
-import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 import 'package:mdi/mdi.dart';
+
+import '../../../models/_models.dart';
+import '../../styles/my_main_styles.dart';
+import '_widgets.dart';
 
 class MoreOptionsList extends StatelessWidget {
   final List<List> _moreOptionsList = const [

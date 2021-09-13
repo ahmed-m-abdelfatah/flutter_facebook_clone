@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/modules/create_post/create_post.dart';
 
 import 'layout/home_layout.dart';
+import 'modules/create_post/create_post.dart';
 
 class AppRouter {
   static const String startScreen = '/';

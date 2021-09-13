@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
+
+import '../../styles/my_main_styles.dart';
 
 class CustomTabBar extends StatelessWidget {
   final List<Widget> icons;

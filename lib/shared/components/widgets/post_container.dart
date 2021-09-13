@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/models/_models.dart';
-import 'package:flutter_facebook_clone/shared/_responsive/responsive.dart';
-import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 import 'package:mdi/mdi.dart';
 
+import '../../../models/_models.dart';
+import '../../_responsive/responsive.dart';
+import '../../styles/my_main_styles.dart';
 // ignore: import_of_legacy_library_into_null_safe
 
 import '_widgets.dart';
