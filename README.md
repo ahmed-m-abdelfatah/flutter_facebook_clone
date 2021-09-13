@@ -18,7 +18,7 @@ GitHub
 
 Screenshots
 
-## ![Desktop](screenshots/screenshot1.jpeg)
+![Desktop](screenshots/screenshot1.jpeg)
 
 |                 Mobile                 |                 Mobile                 |
 | :------------------------------------: | :------------------------------------: |
