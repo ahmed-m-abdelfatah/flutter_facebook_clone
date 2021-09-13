@@ -20,6 +20,6 @@ Screenshots
 
 ## ![Desktop](screenshots/screenshot1.jpeg)
 
-|             Solarized dark             |            Solarized Ocean             |
+|                 Mobile                 |                 Mobile                 |
 | :------------------------------------: | :------------------------------------: |
 | ![Mobile](screenshots/screenshot2.png) | ![Mobile](screenshots/screenshot3.png) |
