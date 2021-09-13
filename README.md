@@ -16,7 +16,7 @@ GitHub
 
 ---
 
-Screenshots
+## screenshots
 
 ![Desktop](screenshots/screenshot1.jpeg)
 
