@@ -1,10 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/shared/adaptive/adaptive_circular_progress_indicator.dart';
-import 'package:flutter_facebook_clone/shared/adaptive/operating_system.dart';
 import 'package:mdi/mdi.dart';
-import 'package:photo_view/photo_view.dart';
-import 'package:photo_view/photo_view_gallery.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
 
@@ -23,6 +20,7 @@ class PostContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDesktop = Responsive.isDesktop(context);
+    print('isDesktop -- $isDesktop');
 
     return Card(
       margin: EdgeInsets.symmetric(horizontal: isDesktop ? 5.0 : 0.0),
@@ -65,37 +63,57 @@ class PostContainer extends StatelessWidget {
 
   Padding _photoGallery() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: AspectRatio(
-        aspectRatio: 16 / 9,
-        child: ClipRect(
-          child: PhotoViewGallery.builder(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Container(
+          width: double.infinity,
+          margin: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: CarouselSlider.builder(
             itemCount: post.imagesUrls!.length,
-            enableRotation: false,
-            backgroundDecoration: BoxDecoration(color: Colors.black45),
-            scrollPhysics: const BouncingScrollPhysics(),
-            loadingBuilder: (context, event) {
-              return Center(
-                child: AdaptiveCircularProgressIndicator(
-                  os: OperatingSystem.getOs(),
-                ),
-              );
-            },
-            builder: (context, index) {
-              return PhotoViewGalleryPageOptions(
-                imageProvider: NetworkImage(post.imagesUrls![index]),
-                minScale: PhotoViewComputedScale.contained * 0.8,
-                initialScale: PhotoViewComputedScale.contained * 1.0,
-                maxScale: PhotoViewComputedScale.covered * 2.0,
-                heroAttributes: PhotoViewHeroAttributes(
-                  tag: post.imagesUrls![index],
-                ),
+            options: CarouselOptions(
+              enlargeCenterPage: true,
+            ),
+            itemBuilder: (context, index, realIndex) {
+              return CachedNetworkImage(
+                imageUrl: post.imagesUrls![index],
+                fit: BoxFit.cover,
+                width: double.infinity,
               );
             },
           ),
-        ),
-      ),
-    );
+        )
+
+        // AspectRatio(
+        //   aspectRatio: 16 / 9,
+        //   child: ClipRect(
+        //     child: PhotoViewGallery.builder(
+        //       itemCount: post.imagesUrls!.length,
+        //       enableRotation: false,
+        //       backgroundDecoration: BoxDecoration(color: Colors.black45),
+        //       scrollPhysics: const BouncingScrollPhysics(),
+        //       loadingBuilder: (context, event) {
+        //         return Center(
+        //           child: AdaptiveCircularProgressIndicator(
+        //             os: OperatingSystem.getOs(),
+        //           ),
+        //         );
+        //       },
+        //       builder: (context, index) {
+        //         print(post.imagesUrls![index]);
+
+        //         return PhotoViewGalleryPageOptions(
+        //           imageProvider: NetworkImage(post.imagesUrls![index]),
+        //           minScale: PhotoViewComputedScale.contained * 0.6,
+        //           initialScale: PhotoViewComputedScale.covered * 0.8,
+        //           maxScale: PhotoViewComputedScale.covered * 2.0,
+        //           heroAttributes: PhotoViewHeroAttributes(
+        //             tag: post.imagesUrls![index],
+        //           ),
+        //         );
+        //       },
+        //     ),
+        //   ),
+        // ),
+        );
   }
 }
 
