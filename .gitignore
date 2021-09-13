@@ -3,8 +3,7 @@ android/
 ios/
 test/
 Web/
-build/
-!build/web
+build
 pubspec.lock
 .metadata
 .dart_tool/
