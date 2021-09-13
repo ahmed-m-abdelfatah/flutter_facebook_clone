@@ -17,6 +17,9 @@ GitHub
 ---
 
 Screenshots
-![Desktop](screenshots/Screenshot1.png?raw=true "Desktop")
-![Mobile](screenshots/Screenshot2.png?raw=true "Mobile")
-![Mobile](screenshots/Screenshot3.png?raw=true "Mobile")
+
+![Desktop](screenshots/screenshot1.jpeg)
+
+| Home Page                              | Home Page                              |
+| -------------------------------------- | -------------------------------------- |
+| ![Mobile](screenshots/Screenshot2.png) | ![Mobile](screenshots/Screenshot3.png) |
