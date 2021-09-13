@@ -18,8 +18,8 @@ GitHub
 
 Screenshots
 
-![Desktop](screenshots/screenshot1.jpeg)
+## ![Desktop](screenshots/screenshot1.jpeg)
 
-| Home Page                              | Home Page                              |
-| -------------------------------------- | -------------------------------------- |
-| ![Mobile](screenshots/Screenshot2.png) | ![Mobile](screenshots/Screenshot3.png) |
+|             Solarized dark             |            Solarized Ocean             |
+| :------------------------------------: | :------------------------------------: |
+| ![Mobile](screenshots/screenshot2.png) | ![Mobile](screenshots/screenshot3.png) |
