@@ -41,10 +41,16 @@ class CreatePostContainer extends StatelessWidget {
                           ),
                         )
                       : OutlinedButton(
-                          child: Text(
-                            "What\'s on your mind?",
-                            style: const TextStyle(
-                              color: Colors.black54,
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: Text(
+                                "What\'s on your mind?",
+                                style: const TextStyle(
+                                  color: Colors.black54,
+                                ),
+                              ),
                             ),
                           ),
                           onPressed: () {

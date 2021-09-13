@@ -19,7 +19,7 @@ class Stories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.0,
+      height: 280.0,
       color: !Responsive.isDesktop(context) ? Colors.white : Colors.transparent,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
