@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_clone/shared/_responsive/responsive.dart';
-import 'package:flutter_facebook_clone/shared/components/widgets/widgets.dart';
+import 'package:flutter_facebook_clone/shared/components/widgets/_widgets.dart';
+import 'package:flutter_facebook_clone/shared/repository/repository.dart';
 import 'package:mdi/mdi.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
 
 import '../shared/components/my_constants.dart';
-import '../shared/network/local/repository/repository.dart';
 import '../shared/styles/my_main_styles.dart';
 
 class HomeLayout extends StatelessWidget {
@@ -57,7 +57,7 @@ class HomeLayout extends StatelessWidget {
           ),
         ],
         bottom: TabBar(
-          indicatorColor: Palette.facebookBlue,
+          indicatorColor: MyMainColors.facebookBlue,
           tabs: MyConstants.tabsIcons,
         ),
       ),

@@ -6,7 +6,7 @@ import 'my_main_styles.dart';
 ThemeData myLightTheme(BuildContext context) {
   return ThemeData(
     primarySwatch: Colors.blue,
-    scaffoldBackgroundColor: Palette.scaffold,
+    scaffoldBackgroundColor: MyMainColors.scaffold,
     focusColor: Colors.black,
     appBarTheme: _appBarTheme(context),
     tabBarTheme: _tabBarTheme(),
@@ -16,7 +16,7 @@ ThemeData myLightTheme(BuildContext context) {
 TabBarTheme _tabBarTheme() {
   return TabBarTheme(
     unselectedLabelColor: Colors.grey,
-    labelColor: Palette.facebookBlue,
+    labelColor: MyMainColors.facebookBlue,
   );
 }
 
@@ -30,7 +30,7 @@ AppBarTheme _appBarTheme(context) {
     elevation: 0,
     centerTitle: false,
     titleTextStyle: const TextStyle(
-      color: Palette.facebookBlue,
+      color: MyMainColors.facebookBlue,
       fontSize: 28.0,
       fontWeight: FontWeight.bold,
       letterSpacing: -1.2,

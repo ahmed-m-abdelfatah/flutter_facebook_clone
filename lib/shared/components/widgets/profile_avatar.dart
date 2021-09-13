@@ -20,7 +20,7 @@ class ProfileAvatar extends StatelessWidget {
       alignment: Alignment.bottomRight,
       children: [
         CircleAvatar(
-          backgroundColor: Palette.facebookBlue,
+          backgroundColor: MyMainColors.facebookBlue,
           radius: 20.0,
           child: CircleAvatar(
             radius: hasBorder ? 17.0 : 20.0,
@@ -35,7 +35,7 @@ class ProfileAvatar extends StatelessWidget {
             backgroundColor: Colors.white,
             radius: 6.0,
             child: CircleAvatar(
-              backgroundColor: Palette.online,
+              backgroundColor: MyMainColors.online,
               radius: 5.0,
             ),
           )

@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/models/models.dart';
+import 'package:flutter_facebook_clone/models/_models.dart';
 import 'package:flutter_facebook_clone/shared/_responsive/responsive.dart';
 import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 
-import 'widgets.dart';
+import '_widgets.dart';
 
 class Stories extends StatelessWidget {
   final UserModel currentUser;
@@ -80,7 +80,7 @@ class _StoryCard extends StatelessWidget {
           height: double.infinity,
           width: 110.0,
           decoration: BoxDecoration(
-            gradient: Palette.storyGradient,
+            gradient: MyMainColors.storyGradient,
             borderRadius: BorderRadius.circular(12.0),
             boxShadow: !Responsive.isDesktop(context)
                 ? null
@@ -105,7 +105,7 @@ class _StoryCard extends StatelessWidget {
                     icon: const Icon(
                       Icons.add,
                       size: 30.0,
-                      color: Palette.facebookBlue,
+                      color: MyMainColors.facebookBlue,
                     ),
                     onPressed: () => print('Add To Story'),
                   ),

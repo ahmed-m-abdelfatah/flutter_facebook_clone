@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/models/models.dart';
+import 'package:flutter_facebook_clone/models/_models.dart';
 import 'package:flutter_facebook_clone/shared/_responsive/responsive.dart';
 import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 
-import 'widgets.dart';
+import '_widgets.dart';
 
 class Rooms extends StatelessWidget {
   final List<UserModel> onlineUsers;
@@ -73,7 +73,7 @@ class _CreateRoomButton extends StatelessWidget {
         children: [
           ShaderMask(
             shaderCallback: (rect) {
-              return Palette.createRoomGradient.createShader(rect);
+              return MyMainColors.createRoomGradient.createShader(rect);
             },
             child: Icon(
               Icons.video_call,
@@ -84,7 +84,7 @@ class _CreateRoomButton extends StatelessWidget {
           const SizedBox(width: 4.0),
           Text(
             'create\nroom',
-            style: TextStyle(color: Palette.facebookBlue),
+            style: TextStyle(color: MyMainColors.facebookBlue),
           ),
         ],
       ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_clone/app_router.dart';
-import 'package:flutter_facebook_clone/models/models.dart';
+import 'package:flutter_facebook_clone/models/_models.dart';
 import 'package:flutter_facebook_clone/shared/_responsive/responsive.dart';
 
-import 'widgets.dart';
+import '_widgets.dart';
 
 class CreatePostContainer extends StatelessWidget {
   final UserModel currentUser;

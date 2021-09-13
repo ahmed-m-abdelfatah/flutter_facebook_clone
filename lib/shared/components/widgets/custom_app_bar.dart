@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/models/models.dart';
+import 'package:flutter_facebook_clone/models/_models.dart';
 import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 import 'package:mdi/mdi.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
 
-import 'widgets.dart';
+import '_widgets.dart';
 
 class CustomAppBar extends StatelessWidget {
   final UserModel currentUser;
@@ -39,7 +39,7 @@ class CustomAppBar extends StatelessWidget {
             child: Text(
               'facebook',
               style: const TextStyle(
-                color: Palette.facebookBlue,
+                color: MyMainColors.facebookBlue,
                 fontSize: 32.0,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -1.2,

@@ -1,4 +1,4 @@
-import '../../../../models/models.dart';
+import '../../../../models/_models.dart';
 
 final UserModel currentUser = UserModel(
   name: 'Marcus Ng',
