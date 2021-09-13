@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_clone/app_router.dart';
 import 'package:flutter_facebook_clone/models/models.dart';
 import 'package:flutter_facebook_clone/shared/_responsive/responsive.dart';
 
@@ -32,12 +33,32 @@ class CreatePostContainer extends StatelessWidget {
                 ProfileAvatar(profileImageUrl: currentUser.profileImageUrl),
                 const SizedBox(width: 8.0),
                 Expanded(
-                  child: TextField(
-                    // collapsed to remove the underline
-                    decoration: InputDecoration.collapsed(
-                      hintText: "What\'s on your mind?",
-                    ),
-                  ),
+                  child: isDesktop
+                      ? TextField(
+                          // collapsed to remove the underline
+                          decoration: InputDecoration.collapsed(
+                            hintText: "What\'s on your mind?",
+                          ),
+                        )
+                      : OutlinedButton(
+                          child: Text(
+                            "What\'s on your mind?",
+                            style: const TextStyle(
+                              color: Colors.black54,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushNamed(AppRouter.createPost);
+                          },
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                            ),
+                          ),
+                        ),
                 )
               ],
             ),
