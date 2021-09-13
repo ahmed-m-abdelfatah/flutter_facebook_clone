@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 
 import '../shared/_responsive/responsive.dart';
-// ignore: import_of_legacy_library_into_null_safe
-
 import '../shared/components/my_constants.dart';
 import '../shared/components/widgets/_widgets.dart';
 import '../shared/repository/repository.dart';
@@ -18,7 +16,7 @@ class HomeLayout extends StatelessWidget {
 
     return SafeArea(
       child: DefaultTabController(
-        length: MyConstants.tabs.length,
+        length: TabBarData.tabs.length,
         child: GestureDetector(
           // tap any where to remove foucs from text field
           onTap: () => FocusScope.of(context).unfocus(),
@@ -58,7 +56,7 @@ class HomeLayout extends StatelessWidget {
         ],
         bottom: TabBar(
           indicatorColor: MyMainColors.facebookBlue,
-          tabs: MyConstants.tabsIcons,
+          tabs: TabBarData.tabsIcons,
         ),
       ),
     );
@@ -69,7 +67,7 @@ class HomeLayout extends StatelessWidget {
       preferredSize: Size(screenSize.width, 100),
       child: CustomAppBar(
         currentUser: currentUser,
-        icons: MyConstants.tabsIcons,
+        icons: TabBarData.tabsIcons,
       ),
     );
   }
@@ -80,7 +78,7 @@ class _BuildHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabBarView(children: MyConstants.tabs);
+    return TabBarView(children: TabBarData.tabs);
   }
 }
 
@@ -107,7 +105,7 @@ class _BuildHomeScreenDesktop extends StatelessWidget {
           color: Colors.transparent,
           child: TabBarView(
             physics: NeverScrollableScrollPhysics(),
-            children: MyConstants.tabs,
+            children: TabBarData.tabs,
           ),
         ),
         const Spacer(),

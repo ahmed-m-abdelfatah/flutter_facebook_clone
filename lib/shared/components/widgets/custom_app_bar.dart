@@ -3,8 +3,6 @@ import 'package:mdi/mdi.dart';
 
 import '../../../models/_models.dart';
 import '../../styles/my_main_styles.dart';
-// ignore: import_of_legacy_library_into_null_safe
-
 import '_widgets.dart';
 
 class CustomAppBar extends StatelessWidget {

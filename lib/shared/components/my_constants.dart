@@ -8,7 +8,7 @@ import '../../modules/menu/menu_tap.dart';
 import '../../modules/notifications/notifications_tap.dart';
 import '../../modules/profile/profile_tap.dart';
 
-class MyConstants {
+class TabBarData {
   static const List<Widget> tabs = [
     FeedsTap(),
     GroupsTap(),
