@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_clone/models/models.dart';
-import 'package:flutter_facebook_clone/shared/components/user_card.dart';
+import 'package:flutter_facebook_clone/shared/components/widgets/widgets.dart';
 import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 import 'package:mdi/mdi.dart';
 

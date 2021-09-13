@@ -1,12 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_clone/models/models.dart';
+import 'package:flutter_facebook_clone/shared/_responsive/responsive.dart';
+import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 import 'package:mdi/mdi.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
 
-import '../../models/models.dart';
-import '../styles/my_main_styles.dart';
 import 'widgets.dart';
 
 class PostContainer extends StatelessWidget {

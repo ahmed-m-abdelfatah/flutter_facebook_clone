@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_clone/models/models.dart';
-import 'package:flutter_facebook_clone/shared/components/widgets.dart';
+import 'package:flutter_facebook_clone/shared/components/widgets/widgets.dart';
 
 class ContactsList extends StatelessWidget {
   final List<UserModel> onlineUsers;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_clone/models/models.dart';
+import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 import 'package:mdi/mdi.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
 
-import '../../models/user_model.dart';
-import '../styles/my_main_styles.dart';
 import 'widgets.dart';
 
 class CustomAppBar extends StatelessWidget {

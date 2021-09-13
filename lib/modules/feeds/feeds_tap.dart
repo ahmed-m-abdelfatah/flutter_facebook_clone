@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_clone/shared/_responsive/responsive.dart';
+import 'package:flutter_facebook_clone/shared/components/widgets/widgets.dart';
 
 import '../../models/models.dart';
-import '../../shared/components/widgets.dart';
 import '../../shared/network/local/repository/repository.dart';
 
 class FeedsTap extends StatelessWidget {

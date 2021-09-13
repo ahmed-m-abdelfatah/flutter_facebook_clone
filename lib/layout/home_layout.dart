@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_clone/shared/_responsive/responsive.dart';
+import 'package:flutter_facebook_clone/shared/components/widgets/widgets.dart';
 import 'package:mdi/mdi.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
 
 import '../shared/components/my_constants.dart';
-import '../shared/components/widgets.dart';
 import '../shared/network/local/repository/repository.dart';
 import '../shared/styles/my_main_styles.dart';
 
@@ -13,7 +14,7 @@ class HomeLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
+    Size screenSize = MediaQuery.of(context).size;
 
     return SafeArea(
       child: DefaultTabController(
