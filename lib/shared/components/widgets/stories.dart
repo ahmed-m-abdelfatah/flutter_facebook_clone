@@ -24,6 +24,7 @@ class Stories extends StatelessWidget {
       height: isDesktop ? 200.0 : 240.0,
       color: !Responsive.isDesktop(context) ? Colors.white : Colors.transparent,
       child: ListView.builder(
+        controller: ScrollController(),
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(
           vertical: 10.0,

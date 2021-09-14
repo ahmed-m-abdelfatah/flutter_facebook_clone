@@ -1,22 +1,37 @@
 import 'package:flutter/material.dart';
 
-// TODO: https://github.com/MaikuB/incrementally_loading_listview/blob/master/example/lib/main.dart
 import '../../models/_models.dart';
 import '../../shared/_responsive/responsive.dart';
 import '../../shared/components/widgets/_widgets.dart';
 import '../../shared/repository/repository.dart';
 
-class FeedsTap extends StatelessWidget {
-  const FeedsTap({Key? key}) : super(key: key);
+class FeedsTab extends StatelessWidget {
+  const FeedsTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        children: !Responsive.isDesktop(context)
-            ? _buildFeeds(context)
-            : _buildFeedsDesktop(context),
+    ScrollController _feedsScrollController = ScrollController();
+    return WillPopScope(
+      onWillPop: () async {
+        if (_feedsScrollController.offset > 0.0) {
+          await _feedsScrollController.animateTo(
+            0.0,
+            duration: Duration(seconds: 1),
+            curve: Curves.easeInOut,
+          );
+          return false;
+        } else {
+          return true;
+        }
+      },
+      child: SingleChildScrollView(
+        controller: _feedsScrollController,
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: !Responsive.isDesktop(context)
+              ? _buildFeeds(context)
+              : _buildFeedsDesktop(context),
+        ),
       ),
     );
   }
