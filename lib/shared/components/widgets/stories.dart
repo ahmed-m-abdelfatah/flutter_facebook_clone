@@ -21,7 +21,7 @@ class Stories extends StatelessWidget {
     bool isDesktop = Responsive.isDesktop(context);
 
     return Container(
-      height: isDesktop ? 200.0 : 280.0,
+      height: isDesktop ? 200.0 : 240.0,
       color: !Responsive.isDesktop(context) ? Colors.white : Colors.transparent,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
