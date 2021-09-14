@@ -4,10 +4,12 @@ import '../../styles/my_main_styles.dart';
 
 class CustomTabBar extends StatelessWidget {
   final List<Widget> icons;
+  final bool isBottomIndicator;
 
   const CustomTabBar({
     Key? key,
     required this.icons,
+    this.isBottomIndicator = false,
   }) : super(key: key);
 
   @override
@@ -16,7 +18,7 @@ class CustomTabBar extends StatelessWidget {
       indicatorPadding: EdgeInsets.zero,
       indicator: BoxDecoration(
         border: Border(
-          top: BorderSide(
+          bottom: BorderSide(
             color: MyMainColors.facebookBlue,
             width: 3.0,
           ),

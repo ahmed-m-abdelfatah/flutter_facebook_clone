@@ -22,11 +22,8 @@ TabBarTheme _tabBarTheme() {
 
 AppBarTheme _appBarTheme(context) {
   return AppBarTheme(
-    // backwardsCompatibility: false, to edit status bar
-    backwardsCompatibility: false,
     systemOverlayStyle: statusbar(),
     backgroundColor: Colors.white,
-    brightness: Brightness.light,
     elevation: 0,
     centerTitle: false,
     titleTextStyle: const TextStyle(

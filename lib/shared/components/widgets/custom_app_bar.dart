@@ -47,7 +47,10 @@ class CustomAppBar extends StatelessWidget {
           Container(
             height: double.infinity,
             width: 600.0,
-            child: CustomTabBar(icons: icons),
+            child: CustomTabBar(
+              icons: icons,
+              isBottomIndicator: false,
+            ),
           ),
           Expanded(
             child: Row(
