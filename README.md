@@ -7,7 +7,6 @@ Youtube
 - https://youtu.be/HvLb5gdUfDE
 - https://youtu.be/j71DiTPshiM
 
----
 
 GitHub
 
@@ -15,7 +14,7 @@ GitHub
 - https://github.com/santiracca/flutter-facebook-clone
 - https://github.com/ahmedgulabkhan/facebook_ui_flutter
 
----
+
 
 Other
 
