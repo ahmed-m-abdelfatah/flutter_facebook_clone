@@ -1,6 +1,6 @@
 # flutter_facebook_clone
 
-## resources
+## Resources
 
 Youtube
 
@@ -21,7 +21,7 @@ Other
 
 - https://api.flutter.dev/flutter/widgets/WillPopScope-class.html
 
-## screenshots
+## Screenshots
 
 ![Desktop](screenshots/screenshot1.jpeg)
 
