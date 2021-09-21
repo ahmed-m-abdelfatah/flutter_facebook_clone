@@ -21,6 +21,8 @@ Other
 
 - https://api.flutter.dev/flutter/widgets/WillPopScope-class.html
 
+---
+
 ## Screenshots
 
 ![Desktop](screenshots/screenshot1.jpeg)
