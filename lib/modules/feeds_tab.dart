@@ -35,7 +35,7 @@ class FeedsTab extends StatelessWidget {
             }
           },
           child: SingleChildScrollView(
-            key: null,
+            key: PageStorageKey('FeedsTab'),
             controller: _feedsScrollController,
             scrollDirection: Axis.vertical,
             child: Column(
@@ -75,8 +75,9 @@ class FeedsTab extends StatelessWidget {
                       itemCount: cubit.posts!.length,
                     ),
                     fallbackBuilder: (context) => Center(
-                        child: AdaptiveCircularProgressIndicator(
-                            os: OperatingSystem.getOs())),
+                      child: AdaptiveCircularProgressIndicator(
+                          os: OperatingSystem.getOs()),
+                    ),
                   ),
                 ),
                 const Padding(
