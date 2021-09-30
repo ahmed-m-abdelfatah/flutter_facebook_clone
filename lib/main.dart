@@ -3,16 +3,29 @@ import 'package:flutter/material.dart';
 import 'app_router.dart';
 import 'shared/styles/my_light_theme.dart';
 
-void main()  => runApp(MyApp());
+void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  AppRouter _appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Facebook UI',
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: AppRouter.generateRoute,
+      onGenerateRoute: _appRouter.generateRoute,
       theme: myLightTheme(context),
     );
+  }
+
+  @override
+  void dispose() {
+    _appRouter.dispose();
+    super.dispose();
   }
 }
