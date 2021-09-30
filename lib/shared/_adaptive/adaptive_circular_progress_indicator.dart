@@ -11,10 +11,10 @@ class AdaptiveCircularProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (this.os == 'android') {
-      return CircularProgressIndicator();
+    if (this.os == 'macos' || this.os == 'ios') {
+      return CupertinoActivityIndicator();
     }
 
-    return CupertinoActivityIndicator();
+    return CircularProgressIndicator();
   }
 }

@@ -4,8 +4,7 @@ class PostModel {
   final UserModel user;
   final String caption;
   final String timeAgo;
-  final String? imageUrl;
-  final List<String>? imagesUrls;
+  final List<String>? imageUrl;
   final int likes;
   final int comments;
   final int shares;
@@ -15,7 +14,6 @@ class PostModel {
     required this.caption,
     required this.timeAgo,
     this.imageUrl,
-    this.imagesUrls,
     required this.likes,
     required this.comments,
     required this.shares,

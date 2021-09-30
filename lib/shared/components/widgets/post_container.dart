@@ -19,7 +19,6 @@ class PostContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDesktop = Responsive.isDesktop(context);
-    print('isDesktop -- $isDesktop');
 
     return Card(
       margin: EdgeInsets.symmetric(horizontal: isDesktop ? 5.0 : 0.0),
@@ -40,80 +39,19 @@ class PostContainer extends StatelessWidget {
                   _PostHeader(post: post),
                   const SizedBox(height: 8.0),
                   Text(post.caption),
-                  if (post.imageUrl != null && post.imagesUrls != null)
-                    const SizedBox(height: 10.0),
+                  if (post.imageUrl != null) const SizedBox(height: 10.0),
                 ],
               ),
             ),
-            if (post.imageUrl != null) _photoContainer(),
-            if (post.imagesUrls != null) _photoGallery(),
+            if (post.imageUrl != null)
+              _PostPhotoContainer(
+                postImageUrl: post.imageUrl,
+              ),
             _PostStats(post: post),
           ],
         ),
       ),
     );
-  }
-
-  Padding _photoContainer() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: CachedNetworkImage(imageUrl: post.imageUrl!),
-    );
-  }
-
-  Padding _photoGallery() {
-    return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Container(
-          width: double.infinity,
-          margin: const EdgeInsets.symmetric(horizontal: 10.0),
-          child: CarouselSlider.builder(
-            itemCount: post.imagesUrls!.length,
-            options: CarouselOptions(
-              enlargeCenterPage: true,
-            ),
-            itemBuilder: (context, index, realIndex) {
-              return CachedNetworkImage(
-                imageUrl: post.imagesUrls![index],
-                fit: BoxFit.cover,
-                width: double.infinity,
-              );
-            },
-          ),
-        )
-
-        // AspectRatio(
-        //   aspectRatio: 16 / 9,
-        //   child: ClipRect(
-        //     child: PhotoViewGallery.builder(
-        //       itemCount: post.imagesUrls!.length,
-        //       enableRotation: false,
-        //       backgroundDecoration: BoxDecoration(color: Colors.black45),
-        //       scrollPhysics: const BouncingScrollPhysics(),
-        //       loadingBuilder: (context, event) {
-        //         return Center(
-        //           child: AdaptiveCircularProgressIndicator(
-        //             os: OperatingSystem.getOs(),
-        //           ),
-        //         );
-        //       },
-        //       builder: (context, index) {
-        //         print(post.imagesUrls![index]);
-
-        //         return PhotoViewGalleryPageOptions(
-        //           imageProvider: NetworkImage(post.imagesUrls![index]),
-        //           minScale: PhotoViewComputedScale.contained * 0.6,
-        //           initialScale: PhotoViewComputedScale.covered * 0.8,
-        //           maxScale: PhotoViewComputedScale.covered * 2.0,
-        //           heroAttributes: PhotoViewHeroAttributes(
-        //             tag: post.imagesUrls![index],
-        //           ),
-        //         );
-        //       },
-        //     ),
-        //   ),
-        // ),
-        );
   }
 }
 
@@ -167,6 +105,46 @@ class _PostHeader extends StatelessWidget {
           onPressed: () => print('More'),
         ),
       ],
+    );
+  }
+}
+
+class _PostPhotoContainer extends StatelessWidget {
+  final List<String>? postImageUrl;
+
+  const _PostPhotoContainer({
+    Key? key,
+    required this.postImageUrl,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (postImageUrl!.length == 1) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: CachedNetworkImage(imageUrl: postImageUrl![0]),
+      );
+    }
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Container(
+        width: double.infinity,
+        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: CarouselSlider.builder(
+          itemCount: postImageUrl!.length,
+          options: CarouselOptions(
+            enlargeCenterPage: true,
+          ),
+          itemBuilder: (context, index, realIndex) {
+            return CachedNetworkImage(
+              imageUrl: postImageUrl![index],
+              fit: BoxFit.cover,
+              width: double.infinity,
+            );
+          },
+        ),
+      ),
     );
   }
 }

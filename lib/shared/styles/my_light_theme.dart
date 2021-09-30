@@ -22,7 +22,7 @@ TabBarTheme _tabBarTheme() {
 
 AppBarTheme _appBarTheme(context) {
   return AppBarTheme(
-    systemOverlayStyle: statusbar(),
+    systemOverlayStyle: _statusbar(),
     backgroundColor: Colors.white,
     elevation: 0,
     centerTitle: false,
@@ -36,7 +36,7 @@ AppBarTheme _appBarTheme(context) {
   );
 }
 
-SystemUiOverlayStyle statusbar() {
+SystemUiOverlayStyle _statusbar() {
   return SystemUiOverlayStyle(
     statusBarColor: Colors.white,
     statusBarIconBrightness: Brightness.dark,

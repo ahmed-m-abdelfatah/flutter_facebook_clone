@@ -22,7 +22,7 @@ class HomeLayout extends StatelessWidget {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             appBar: !Responsive.isDesktop(context)
-                ? _buildAppBar()
+                ? _buildAppBarMobile()
                 : _buildAppBarDesktop(screenSize),
             body: Responsive(
               mobile: _BuildHomeScreen(),
@@ -34,7 +34,7 @@ class HomeLayout extends StatelessWidget {
     );
   }
 
-  PreferredSize _buildAppBar() {
+  PreferredSize _buildAppBarMobile() {
     return PreferredSize(
       preferredSize: Size.fromHeight(120.0),
       child: AppBar(

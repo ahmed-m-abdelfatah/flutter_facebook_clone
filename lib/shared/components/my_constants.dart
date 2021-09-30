@@ -1,12 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/modules/profile/profile_tab.dart';
+import 'package:flutter_facebook_clone/modules/profile_tab.dart';
 
-import '../../modules/feeds/feeds_tab.dart';
-import '../../modules/groups/groups_tab.dart';
-import '../../modules/menu/menu_tab.dart';
-import '../../modules/notifications/notifications_tab.dart';
+import '../../modules/feeds_tab.dart';
+import '../../modules/groups_tab.dart';
+import '../../modules/menu_tab.dart';
+import '../../modules/notifications_tab.dart';
 
 class TabBarData {
   static const List<Widget> tabs = [

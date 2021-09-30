@@ -17,6 +17,7 @@ class MoreOptionsList extends StatelessWidget {
   ];
 
   final UserModel currentUser;
+
   const MoreOptionsList({
     Key? key,
     required this.currentUser,
