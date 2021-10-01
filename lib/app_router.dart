@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_facebook_clone/layout/cubit/facebook_cubit.dart';
 
+import 'layout/cubit/facebook_cubit.dart';
 import 'layout/home_layout.dart';
 import 'modules/create_post.dart';
 

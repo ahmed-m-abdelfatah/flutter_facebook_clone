@@ -1,7 +1,7 @@
-import 'dart:io';
+// import 'dart:io';
 
-class OperatingSystem {
-  static String getOs() {
-    return Platform.operatingSystem;
-  }
-}
+// class OperatingSystem {
+//   static String getOs() {
+//     return Platform.operatingSystem;
+//   }
+// }

@@ -4,15 +4,15 @@ import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_facebook_clone/app_router.dart';
-import 'package:flutter_facebook_clone/models/_models.dart';
-import 'package:flutter_facebook_clone/modules/feeds_tab.dart';
-import 'package:flutter_facebook_clone/modules/groups_tab.dart';
-import 'package:flutter_facebook_clone/modules/menu_tab.dart';
-import 'package:flutter_facebook_clone/modules/notifications_tab.dart';
-import 'package:flutter_facebook_clone/modules/profile_tab.dart';
-import 'package:flutter_facebook_clone/shared/repository/repository.dart';
 import 'package:meta/meta.dart';
+
+import '../../models/_models.dart';
+import '../../modules/feeds_tab.dart';
+import '../../modules/groups_tab.dart';
+import '../../modules/menu_tab.dart';
+import '../../modules/notifications_tab.dart';
+import '../../modules/profile_tab.dart';
+import '../../shared/repository/repository.dart';
 
 part 'facebook_state.dart';
 
@@ -31,7 +31,7 @@ class FacebookCubit extends Cubit<FacebookState> {
   void getPosts() {
     emit(GetDataLoading());
 
-    Timer(const Duration(seconds: 2), () {
+    Timer(Duration(seconds: 2), () {
       posts = Repository.posts;
 
       emit(GetDataSuccess());
@@ -43,7 +43,7 @@ class FacebookCubit extends Cubit<FacebookState> {
 class TabBarData {
   static List<Widget> tabs = [
     BlocProvider.value(
-      value: AppRouter.facebookCubit,
+      value: FacebookCubit()..getPosts(),
       child: FeedsTab(),
     ),
     GroupsTab(),

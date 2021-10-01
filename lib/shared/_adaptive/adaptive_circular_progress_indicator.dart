@@ -1,20 +1,20 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/cupertino.dart';
+// import 'package:flutter/material.dart';
 
-class AdaptiveCircularProgressIndicator extends StatelessWidget {
-  final String os;
+// class AdaptiveCircularProgressIndicator extends StatelessWidget {
+//   final String os;
 
-  const AdaptiveCircularProgressIndicator({
-    Key? key,
-    required this.os,
-  }) : super(key: key);
+//   const AdaptiveCircularProgressIndicator({
+//     Key? key,
+//     required this.os,
+//   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    if (this.os == 'macos' || this.os == 'ios') {
-      return CupertinoActivityIndicator();
-    }
+//   @override
+//   Widget build(BuildContext context) {
+//     if (this.os == 'macos' || this.os == 'ios') {
+//       return CupertinoActivityIndicator();
+//     }
 
-    return CircularProgressIndicator();
-  }
-}
+//     return CircularProgressIndicator();
+//   }
+// }
