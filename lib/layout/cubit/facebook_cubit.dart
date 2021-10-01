@@ -4,6 +4,8 @@ import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_facebook_clone/app_router.dart';
+import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 import 'package:meta/meta.dart';
 
 import '../../models/_models.dart';
@@ -31,11 +33,25 @@ class FacebookCubit extends Cubit<FacebookState> {
   void getPosts() {
     emit(GetDataLoading());
 
-    Timer(Duration(seconds: 2), () {
+    Timer(Duration(seconds: 4), () {
       posts = Repository.posts;
 
       emit(GetDataSuccess());
     });
+  }
+
+  // like
+  bool isLiked = false;
+  Color iconColor = Colors.grey.withOpacity(0.6);
+
+  void handelLikePost() {
+    isLiked = !isLiked;
+
+    isLiked
+        ? iconColor = MyMainColors.facebookBlue
+        : iconColor = Colors.grey.withOpacity(0.6);
+
+    emit(ChangeLikeButton());
   }
 }
 
@@ -43,7 +59,7 @@ class FacebookCubit extends Cubit<FacebookState> {
 class TabBarData {
   static List<Widget> tabs = [
     BlocProvider.value(
-      value: FacebookCubit()..getPosts(),
+      value: AppRouter.facebookCubit..getPosts(),
       child: FeedsTab(),
     ),
     GroupsTab(),

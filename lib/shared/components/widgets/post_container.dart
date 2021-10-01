@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_facebook_clone/layout/cubit/facebook_cubit.dart';
 import 'package:mdi/mdi.dart';
 
 import '../../../models/_models.dart';
@@ -159,86 +161,114 @@ class _PostStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Column(
-        children: [
-          const SizedBox(height: 6.0),
-          Row(
+    return BlocConsumer<FacebookCubit, FacebookState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Column(
             children: [
-              Container(
-                padding: const EdgeInsets.all(4.0),
-                decoration: BoxDecoration(
-                  color: MyMainColors.facebookBlue,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  Icons.thumb_up,
-                  size: 10.0,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(width: 4.0),
-              Expanded(
-                child: Text(
-                  '${post.likes}',
-                  style: TextStyle(
-                    color: Colors.grey[600],
+              const SizedBox(height: 6.0),
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(4.0),
+                    decoration: BoxDecoration(
+                      color: MyMainColors.facebookBlue,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.thumb_up_alt,
+                      size: 10.0,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
+                  const SizedBox(width: 4.0),
+                  Expanded(
+                    child: Text(
+                      '${post.likes}',
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                  ),
+                  Text(
+                    '${post.comments} Comments',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                  const SizedBox(width: 8.0),
+                  Text(
+                    '${post.shares} Shares',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                    ),
+                  )
+                ],
               ),
-              Text(
-                '${post.comments} Comments',
-                style: TextStyle(
-                  color: Colors.grey[600],
-                ),
-              ),
-              const SizedBox(width: 8.0),
-              Text(
-                '${post.shares} Shares',
-                style: TextStyle(
-                  color: Colors.grey[600],
-                ),
+              const Divider(),
+              Row(
+                children: [
+                  _PostButton(
+                    icon: Icon(
+                      Mdi.thumbUpOutline,
+                      color: FacebookCubit.get(context).iconColor,
+                      size: 20.0,
+                    ),
+                    label: 'Like',
+                    onTap: () {
+                      print('Like');
+                      // FacebookCubit.get(context).handelLikePost();
+                    },
+                  ),
+                  _PostButton(
+                    icon: Icon(
+                      Mdi.commentOutline,
+                      color: Colors.grey[600],
+                      size: 20.0,
+                    ),
+                    label: 'Comment',
+                    onTap: () {
+                      print('Comment');
+                      // _commentBox(context);
+                    },
+                  ),
+                  _PostButton(
+                    icon: Icon(
+                      Mdi.shareOutline,
+                      color: Colors.grey[600],
+                      size: 25.0,
+                    ),
+                    label: 'Share',
+                    onTap: () => print('Share'),
+                  )
+                ],
               )
             ],
           ),
-          const Divider(),
-          Row(
-            children: [
-              _PostButton(
-                icon: Icon(
-                  Mdi.thumbUpOutline,
-                  color: Colors.grey[600],
-                  size: 20.0,
-                ),
-                label: 'Like',
-                onTap: () => print('Like'),
-              ),
-              _PostButton(
-                icon: Icon(
-                  Mdi.commentOutline,
-                  color: Colors.grey[600],
-                  size: 20.0,
-                ),
-                label: 'Comment',
-                onTap: () => print('Comment'),
-              ),
-              _PostButton(
-                icon: Icon(
-                  Mdi.shareOutline,
-                  color: Colors.grey[600],
-                  size: 25.0,
-                ),
-                label: 'Share',
-                onTap: () => print('Share'),
-              )
-            ],
-          )
-        ],
-      ),
+        );
+      },
     );
   }
 }
+
+// void _commentBox(BuildContext context) {
+//   showModalBottomSheet(
+//     isScrollControlled: true,
+//     context: context,
+//     builder: (context) {
+//       return Center(
+//         child: TextField(
+//           decoration: InputDecoration(
+//             border: InputBorder.none,
+//             hintText: 'Write your comment',
+//           ),
+//         ),
+//       );
+//     },
+//   );
+// }
 
 class _PostButton extends StatelessWidget {
   final Icon icon;

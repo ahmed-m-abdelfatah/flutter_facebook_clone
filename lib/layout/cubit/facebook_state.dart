@@ -8,3 +8,5 @@ class FacebookInitial extends FacebookState {}
 class GetDataLoading extends FacebookState {}
 
 class GetDataSuccess extends FacebookState {}
+
+class ChangeLikeButton extends FacebookState {}

@@ -13,13 +13,12 @@ class FeedsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScrollController _feedsScrollController = ScrollController();
+    FacebookCubit _cubit = FacebookCubit.get(context);
+    bool _notDesktop = !Responsive.isDesktop(context);
 
     return BlocConsumer<FacebookCubit, FacebookState>(
       listener: (context, state) {},
       builder: (context, state) {
-        FacebookCubit _cubit = FacebookCubit.get(context);
-        bool _notDesktop = !Responsive.isDesktop(context);
-
         return WillPopScope(
           onWillPop: () async {
             if (_feedsScrollController.offset > 0.0) {
