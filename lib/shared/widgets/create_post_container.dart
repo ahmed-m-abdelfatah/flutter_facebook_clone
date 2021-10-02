@@ -23,7 +23,12 @@ class CreatePostContainer extends StatelessWidget {
           ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
           : null,
       child: Container(
-        padding: const EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 0.0),
+        padding: const EdgeInsets.fromLTRB(
+          12.0,
+          8.0,
+          12.0,
+          0.0,
+        ),
         color: Colors.white,
         child: Column(
           children: [
@@ -56,7 +61,7 @@ class CreatePostContainer extends StatelessWidget {
                           ),
                           onPressed: () {
                             Navigator.of(context)
-                                .pushNamed(AppRouter.createPost);
+                                .pushNamed(AppRouter.createPostScreen);
                           },
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(

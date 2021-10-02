@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_clone/app_router.dart';
 import 'package:mdi/mdi.dart';
 
 import '../../../models/_models.dart';
@@ -62,7 +63,13 @@ class CustomAppBar extends StatelessWidget {
                 CircleButton(
                   icon: Icons.search,
                   iconSize: 30.0,
-                  onPressed: () => print('Search'),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      AppRouter.searchScreen,
+                    );
+                    print('Search');
+                  },
                   radius: 50.0,
                 ),
                 CircleButton(

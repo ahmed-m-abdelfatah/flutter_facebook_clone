@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CreatePost extends StatelessWidget {
-  const CreatePost();
+class CreatePostScreen extends StatelessWidget {
+  const CreatePostScreen();
 
   @override
   Widget build(BuildContext context) {

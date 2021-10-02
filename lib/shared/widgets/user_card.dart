@@ -5,6 +5,7 @@ import '_widgets.dart';
 
 class UserCard extends StatelessWidget {
   final UserModel currentUser;
+  
   const UserCard({
     required this.currentUser,
   });

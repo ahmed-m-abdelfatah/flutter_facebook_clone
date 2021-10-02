@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_clone/app_router.dart';
 import 'package:mdi/mdi.dart';
 
 import '../shared/responsive/responsive.dart';
@@ -49,7 +50,13 @@ PreferredSize _buildAppBar({
             radius: 35.0,
             icon: Icons.search,
             iconSize: 20.0,
-            onPressed: () => print('Search'),
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                AppRouter.searchScreen,
+              );
+              print('Search');
+            },
           ),
           CircleButton(
             radius: 35.0,
