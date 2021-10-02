@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 
 import '../../../models/_models.dart';
-import '../../styles/my_main_styles.dart';
+import '../styles/my_main_styles.dart';
 import '_widgets.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -10,10 +10,9 @@ class CustomAppBar extends StatelessWidget {
   final List<Widget> icons;
 
   const CustomAppBar({
-    Key? key,
     required this.currentUser,
     required this.icons,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +55,9 @@ class CustomAppBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                UserCard(currentUser: currentUser),
+                UserCard(
+                  currentUser: currentUser,
+                ),
                 const SizedBox(width: 12.0),
                 CircleButton(
                   icon: Icons.search,

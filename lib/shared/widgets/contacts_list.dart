@@ -7,9 +7,8 @@ class ContactsList extends StatelessWidget {
   final List<UserModel> onlineUsers;
 
   const ContactsList({
-    Key? key,
     required this.onlineUsers,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +46,9 @@ class ContactsList extends StatelessWidget {
                 final UserModel user = onlineUsers[index];
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: UserCard(currentUser: user),
+                  child: UserCard(
+                    currentUser: user,
+                  ),
                 );
               },
               itemCount: onlineUsers.length,

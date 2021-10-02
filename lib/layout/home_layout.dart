@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 
-import '../shared/_responsive/responsive.dart';
-import '../shared/components/widgets/_widgets.dart';
+import '../shared/responsive/responsive.dart';
 import '../shared/styles/my_main_styles.dart';
+import '../shared/widgets/_widgets.dart';
 import 'cubit/facebook_cubit.dart';
 
 class HomeLayout extends StatelessWidget {
-  HomeLayout({Key? key}) : super(key: key);
+  HomeLayout();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,6 @@ class HomeLayout extends StatelessWidget {
       child: DefaultTabController(
         length: TabBarData.tabs.length,
         child: GestureDetector(
-          // tap any where to remove foucs from text field
           onTap: _notDesktop ? null : () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             appBar: _buildAppBar(
@@ -77,7 +76,9 @@ PreferredSize _buildAppBar({
 
 Responsive _buildHomeScreen(BuildContext context) {
   return Responsive(
-    mobile: TabBarView(children: TabBarData.tabs),
+    mobile: TabBarView(
+      children: TabBarData.tabs,
+    ),
     desktop: Row(
       children: [
         Flexible(
@@ -94,7 +95,7 @@ Responsive _buildHomeScreen(BuildContext context) {
         ),
         const Spacer(),
         Container(
-          width: 600.0, // container -> w600 {custom tap bar}
+          width: 600.0,
           color: Colors.transparent,
           child: TabBarView(
             physics: NeverScrollableScrollPhysics(),
@@ -109,7 +110,8 @@ Responsive _buildHomeScreen(BuildContext context) {
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: ContactsList(
-                  onlineUsers: FacebookCubit.get(context).onlineUsers),
+                onlineUsers: FacebookCubit.get(context).onlineUsers,
+              ),
             ),
           ),
         ),

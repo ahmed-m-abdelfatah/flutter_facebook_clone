@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/_models.dart';
-import '../../_responsive/responsive.dart';
-import '../../styles/my_main_styles.dart';
+import '../responsive/responsive.dart';
+import '../styles/my_main_styles.dart';
 import '_widgets.dart';
 
 class Stories extends StatelessWidget {
@@ -11,10 +11,9 @@ class Stories extends StatelessWidget {
   final List<StoryModel> stories;
 
   const Stories({
-    Key? key,
     required this.currentUser,
     required this.stories,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -59,11 +58,10 @@ class _StoryCard extends StatelessWidget {
   final StoryModel? story;
 
   const _StoryCard({
-    Key? key,
     this.isAddStory = false,
     this.currentUser,
     this.story,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

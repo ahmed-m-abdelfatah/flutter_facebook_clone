@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../../app_router.dart';
 import '../../../models/_models.dart';
-import '../../_responsive/responsive.dart';
+import '../responsive/responsive.dart';
 import '_widgets.dart';
 
 class CreatePostContainer extends StatelessWidget {
   final UserModel currentUser;
 
   const CreatePostContainer({
-    Key? key,
     required this.currentUser,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +29,15 @@ class CreatePostContainer extends StatelessWidget {
           children: [
             Row(
               children: [
-                ProfileAvatar(profileImageUrl: currentUser.profileImageUrl),
+                ProfileAvatar(
+                  profileImageUrl: currentUser.profileImageUrl,
+                ),
                 const SizedBox(width: 8.0),
                 Expanded(
                   child: isDesktop
                       ? TextField(
-                          // collapsed to remove the underline
                           decoration: InputDecoration.collapsed(
+                            // collapsed to remove the underline
                             hintText: "What\'s on your mind?",
                           ),
                         )

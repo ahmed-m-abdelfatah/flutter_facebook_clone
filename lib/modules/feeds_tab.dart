@@ -4,11 +4,11 @@ import 'package:flutter_conditional_rendering/flutter_conditional_rendering.dart
 
 import '../layout/cubit/facebook_cubit.dart';
 import '../models/_models.dart';
-import '../shared/_responsive/responsive.dart';
-import '../shared/components/widgets/_widgets.dart';
+import '../shared/responsive/responsive.dart';
+import '../shared/widgets/_widgets.dart';
 
 class FeedsTab extends StatelessWidget {
-  const FeedsTab({Key? key}) : super(key: key);
+  const FeedsTab();
 
   @override
   Widget build(BuildContext context) {
@@ -33,29 +33,37 @@ class FeedsTab extends StatelessWidget {
             }
           },
           child: SingleChildScrollView(
-            key: PageStorageKey('FeedsTab'),
+            key: PageStorageKey('feeds'),
             controller: _feedsScrollController,
             scrollDirection: Axis.vertical,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 _notDesktop
-                    ? CreatePostContainer(currentUser: _cubit.currentUser)
+                    ? CreatePostContainer(
+                        currentUser: _cubit.currentUser,
+                      )
                     : Stories(
                         currentUser: _cubit.currentUser,
                         stories: _cubit.stories,
                       ),
                 const SizedBox(height: 10.0),
                 _notDesktop
-                    ? Rooms(onlineUsers: _cubit.onlineUsers)
-                    : CreatePostContainer(currentUser: _cubit.currentUser),
+                    ? Rooms(
+                        onlineUsers: _cubit.onlineUsers,
+                      )
+                    : CreatePostContainer(
+                        currentUser: _cubit.currentUser,
+                      ),
                 const SizedBox(height: 10.0),
                 _notDesktop
                     ? Stories(
                         currentUser: _cubit.currentUser,
                         stories: _cubit.stories,
                       )
-                    : Rooms(onlineUsers: _cubit.onlineUsers),
+                    : Rooms(
+                        onlineUsers: _cubit.onlineUsers,
+                      ),
                 const SizedBox(height: 10.0),
                 Conditional.single(
                   context: context,
@@ -66,7 +74,9 @@ class FeedsTab extends StatelessWidget {
                     itemBuilder: (context, index) {
                       PostModel post = _cubit.posts![index];
 
-                      return PostContainer(post: post);
+                      return PostContainer(
+                        post: post,
+                      );
                     },
                     separatorBuilder: (context, index) {
                       return const SizedBox(height: 10.0);

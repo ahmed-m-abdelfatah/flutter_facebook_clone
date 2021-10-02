@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 
 import '../../../models/_models.dart';
-import '../../styles/my_main_styles.dart';
+import '../styles/my_main_styles.dart';
 import '_widgets.dart';
 
 class MoreOptionsList extends StatelessWidget {
@@ -19,9 +19,8 @@ class MoreOptionsList extends StatelessWidget {
   final UserModel currentUser;
 
   const MoreOptionsList({
-    Key? key,
     required this.currentUser,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -57,11 +56,10 @@ class _Option extends StatelessWidget {
   final String label;
 
   const _Option({
-    Key? key,
     required this.icon,
     required this.color,
     required this.label,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

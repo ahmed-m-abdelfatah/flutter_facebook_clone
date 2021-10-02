@@ -7,14 +7,11 @@ Youtube
 - https://youtu.be/HvLb5gdUfDE
 - https://youtu.be/j71DiTPshiM
 
-
 GitHub
 
-- https://github.com/MarcusNg/flutter_facebook_responsive_ui
+- https://github.com/MarcusNg/flutter_facebookresponsive_ui
 - https://github.com/santiracca/flutter-facebook-clone
 - https://github.com/ahmedgulabkhan/facebook_ui_flutter
-
-
 
 Other
 

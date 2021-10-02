@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/_models.dart';
-import '../../_responsive/responsive.dart';
-import '../../styles/my_main_styles.dart';
+import '../responsive/responsive.dart';
+import '../styles/my_main_styles.dart';
 import '_widgets.dart';
 
 class Rooms extends StatelessWidget {
   final List<UserModel> onlineUsers;
 
   const Rooms({
-    Key? key,
     required this.onlineUsers,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +54,6 @@ class Rooms extends StatelessWidget {
 }
 
 class _CreateRoomButton extends StatelessWidget {
-  const _CreateRoomButton({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(

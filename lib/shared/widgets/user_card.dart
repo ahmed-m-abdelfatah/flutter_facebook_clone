@@ -6,9 +6,8 @@ import '_widgets.dart';
 class UserCard extends StatelessWidget {
   final UserModel currentUser;
   const UserCard({
-    Key? key,
     required this.currentUser,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

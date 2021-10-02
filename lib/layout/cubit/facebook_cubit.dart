@@ -4,10 +4,9 @@ import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_facebook_clone/app_router.dart';
-import 'package:flutter_facebook_clone/shared/styles/my_main_styles.dart';
 import 'package:meta/meta.dart';
 
+import '../../app_router.dart';
 import '../../models/_models.dart';
 import '../../modules/feeds_tab.dart';
 import '../../modules/groups_tab.dart';
@@ -15,6 +14,7 @@ import '../../modules/menu_tab.dart';
 import '../../modules/notifications_tab.dart';
 import '../../modules/profile_tab.dart';
 import '../../shared/repository/repository.dart';
+import '../../shared/styles/my_main_styles.dart';
 
 part 'facebook_state.dart';
 
@@ -42,14 +42,14 @@ class FacebookCubit extends Cubit<FacebookState> {
 
   // like
   bool isLiked = false;
-  Color iconColor = Colors.grey.withOpacity(0.6);
+  Color iconColor = Colors.grey.shade600;
 
   void handelLikePost() {
     isLiked = !isLiked;
 
     isLiked
         ? iconColor = MyMainColors.facebookBlue
-        : iconColor = Colors.grey.withOpacity(0.6);
+        : iconColor = Colors.grey.shade600;
 
     emit(ChangeLikeButton());
   }

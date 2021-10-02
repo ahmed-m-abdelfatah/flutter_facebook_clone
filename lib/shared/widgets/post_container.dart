@@ -2,21 +2,20 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_facebook_clone/layout/cubit/facebook_cubit.dart';
 import 'package:mdi/mdi.dart';
 
 import '../../../models/_models.dart';
-import '../../_responsive/responsive.dart';
-import '../../styles/my_main_styles.dart';
+import '../../layout/cubit/facebook_cubit.dart';
+import '../responsive/responsive.dart';
+import '../styles/my_main_styles.dart';
 import '_widgets.dart';
 
 class PostContainer extends StatelessWidget {
   final PostModel post;
 
   const PostContainer({
-    Key? key,
     required this.post,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,9 @@ class PostContainer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _PostHeader(post: post),
+                  _PostHeader(
+                    post: post,
+                  ),
                   const SizedBox(height: 8.0),
                   Text(post.caption),
                   if (post.imageUrl != null) const SizedBox(height: 10.0),
@@ -49,7 +50,9 @@ class PostContainer extends StatelessWidget {
               _PostPhotoContainer(
                 postImageUrl: post.imageUrl,
               ),
-            _PostStats(post: post),
+            _PostStats(
+              post: post,
+            ),
           ],
         ),
       ),
@@ -61,9 +64,8 @@ class _PostHeader extends StatelessWidget {
   final PostModel post;
 
   const _PostHeader({
-    Key? key,
     required this.post,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -115,16 +117,17 @@ class _PostPhotoContainer extends StatelessWidget {
   final List<String>? postImageUrl;
 
   const _PostPhotoContainer({
-    Key? key,
     required this.postImageUrl,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     if (postImageUrl!.length == 1) {
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: CachedNetworkImage(imageUrl: postImageUrl![0]),
+        child: CachedNetworkImage(
+          imageUrl: postImageUrl![0],
+        ),
       );
     }
 
@@ -155,9 +158,8 @@ class _PostStats extends StatelessWidget {
   final PostModel post;
 
   const _PostStats({
-    Key? key,
     required this.post,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -219,7 +221,7 @@ class _PostStats extends StatelessWidget {
                     label: 'Like',
                     onTap: () {
                       print('Like');
-                      // FacebookCubit.get(context).handelLikePost();
+                      FacebookCubit.get(context).handelLikePost();
                     },
                   ),
                   _PostButton(
@@ -276,11 +278,10 @@ class _PostButton extends StatelessWidget {
   final Function onTap;
 
   const _PostButton({
-    Key? key,
     required this.icon,
     required this.label,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
