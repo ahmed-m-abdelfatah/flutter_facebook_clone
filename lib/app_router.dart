@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_facebook_clone/modules/search_screnn.dart';
 
 import 'layout/cubit/facebook_cubit.dart';
 import 'layout/home_layout.dart';
 import 'modules/create_post_screen.dart';
+import 'modules/messenger_screen.dart';
+import 'modules/search_screnn.dart';
 
 class AppRouter {
   static const String startScreen = '/';
   static const String homeLayout = '/home';
   static const String createPostScreen = '/create-post';
   static const String searchScreen = '/search';
+  static const String messengerScreen = '/messenger';
 
   static FacebookCubit facebookCubit = FacebookCubit();
   void dispose() {
@@ -27,6 +29,8 @@ class AppRouter {
         return _goToCreatePostScreen();
       case searchScreen:
         return _goToSearchScreen();
+      case messengerScreen:
+        return _goToMessengerScreen();
       default:
         return _startScreen();
     }
@@ -52,6 +56,15 @@ class AppRouter {
   static MaterialPageRoute<dynamic> _goToSearchScreen() {
     return MaterialPageRoute(
       builder: (_) => SearchScreen(),
+    );
+  }
+
+  static MaterialPageRoute<dynamic> _goToMessengerScreen() {
+    return MaterialPageRoute(
+      builder: (_) => BlocProvider.value(
+        value: facebookCubit,
+        child: MessengerScreen(),
+      ),
     );
   }
 }

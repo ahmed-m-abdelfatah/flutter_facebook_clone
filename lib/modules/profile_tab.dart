@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_facebook_clone/layout/cubit/facebook_cubit.dart';
-import 'package:flutter_facebook_clone/shared/widgets/_widgets.dart';
+
+import '../layout/cubit/facebook_cubit.dart';
+import '../shared/widgets/_widgets.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab();
@@ -53,14 +55,10 @@ class _CurrentUserNameAndPhoto extends StatelessWidget {
             alignment: Alignment.topCenter,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 15.0,
-                  vertical: 15.0,
-                ),
                 height: 180.0,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage(
+                    image: CachedNetworkImageProvider(
                       'https://i.picsum.photos/id/528/700/700.jpg?hmac=jeoiMFuAkVPXKmxRnfr1dybhOZJcmthNPjKcBNw-43A',
                     ),
                     fit: BoxFit.cover,
@@ -127,6 +125,7 @@ class _CurrentUserIcons extends StatelessWidget {
       children: [
         ListView.separated(
           shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) => _buildIconRow(
             _iconsData[index][0],
             _iconsData[index][1],

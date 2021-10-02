@@ -43,6 +43,8 @@ class FacebookCubit extends Cubit<FacebookState> {
   // like
   bool isLiked = false;
   Color iconColor = Colors.grey.shade600;
+  String label = 'Like';
+  Color lableColor = Colors.black;
 
   void handelLikePost() {
     isLiked = !isLiked;
@@ -50,6 +52,12 @@ class FacebookCubit extends Cubit<FacebookState> {
     isLiked
         ? iconColor = MyMainColors.facebookBlue
         : iconColor = Colors.grey.shade600;
+
+    isLiked ? label = 'Liked' : label = 'Like';
+
+    isLiked
+        ? lableColor = MyMainColors.facebookBlue
+        : lableColor = Colors.black;
 
     emit(ChangeLikeButton());
   }

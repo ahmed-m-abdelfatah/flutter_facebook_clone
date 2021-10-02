@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/app_router.dart';
+import '../../app_router.dart';
 import 'package:mdi/mdi.dart';
 
 import '../../../models/_models.dart';

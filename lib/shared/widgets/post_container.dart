@@ -214,11 +214,12 @@ class _PostStats extends StatelessWidget {
                 children: [
                   _PostButton(
                     icon: Icon(
-                      Mdi.thumbUpOutline,
+                      Mdi.thumbUp,
                       color: FacebookCubit.get(context).iconColor,
                       size: 20.0,
                     ),
-                    label: 'Like',
+                    label: FacebookCubit.get(context).label,
+                    lableColor: FacebookCubit.get(context).lableColor,
                     onTap: () {
                       print('Like');
                       FacebookCubit.get(context).handelLikePost();
@@ -232,8 +233,8 @@ class _PostStats extends StatelessWidget {
                     ),
                     label: 'Comment',
                     onTap: () {
+                      _commentBox(context);
                       print('Comment');
-                      // _commentBox(context);
                     },
                   ),
                   _PostButton(
@@ -253,35 +254,65 @@ class _PostStats extends StatelessWidget {
       },
     );
   }
-}
 
-// void _commentBox(BuildContext context) {
-//   showModalBottomSheet(
-//     isScrollControlled: true,
-//     context: context,
-//     builder: (context) {
-//       return Center(
-//         child: TextField(
-//           decoration: InputDecoration(
-//             border: InputBorder.none,
-//             hintText: 'Write your comment',
-//           ),
-//         ),
-//       );
-//     },
-//   );
-// }
+  void _commentBox(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          insetAnimationCurve: Curves.easeInOut,
+          insetAnimationDuration: Duration(milliseconds: 200),
+          child: Container(
+              height: MediaQuery.of(context).size.height * 0.98,
+              width: MediaQuery.of(context).size.width * 0.98,
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                    Spacer(),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        hintText: 'Write your comment ...',
+                        suffixIcon: IconButton(
+                          icon: Icon(Icons.send),
+                          onPressed: () {},
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(
+                            color: Colors.blue,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )),
+        );
+      },
+    );
+  }
+}
 
 class _PostButton extends StatelessWidget {
   final Icon icon;
   final String label;
   final Function onTap;
+  final Color lableColor;
 
   const _PostButton({
+    Key? key,
     required this.icon,
     required this.label,
     required this.onTap,
-  });
+    this.lableColor = Colors.black,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -298,7 +329,10 @@ class _PostButton extends StatelessWidget {
               children: [
                 icon,
                 const SizedBox(width: 4.0),
-                Text(label),
+                Text(
+                  label,
+                  style: TextStyle(color: lableColor),
+                ),
               ],
             ),
           ),

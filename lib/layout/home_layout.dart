@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_clone/app_router.dart';
 import 'package:mdi/mdi.dart';
 
+import '../app_router.dart';
 import '../shared/responsive/responsive.dart';
 import '../shared/styles/my_main_styles.dart';
 import '../shared/widgets/_widgets.dart';
@@ -62,7 +62,13 @@ PreferredSize _buildAppBar({
             radius: 35.0,
             icon: Mdi.facebookMessenger,
             iconSize: 20.0,
-            onPressed: () => print('messenger'),
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                AppRouter.messengerScreen,
+              );
+              print('messenger');
+            },
           ),
         ],
         bottom: TabBar(
