@@ -18,19 +18,23 @@ class ProfileTab extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return SingleChildScrollView(
-            controller: _profileScrollController,
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                children: [
-                  _CurrentUserNameAndPhoto(cubit: _cubit),
-                  const Divider(height: 40.0),
-                  _CurrentUserIcons(),
-                  const Divider(height: 40.0),
-                  _FrendsBox(),
-                ],
+          controller: _profileScrollController,
+          child: Column(
+            children: [
+              _CurrentUserNameAndPhoto(cubit: _cubit),
+              const Divider(height: 40.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                child: _CurrentUserIcons(),
               ),
-            ));
+              const Divider(height: 40.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                child: _FrendsBox(cubit: _cubit),
+              ),
+            ],
+          ),
+        );
       },
     );
   }
@@ -63,7 +67,6 @@ class _CurrentUserNameAndPhoto extends StatelessWidget {
                     ),
                     fit: BoxFit.cover,
                   ),
-                  borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
               Transform.translate(
@@ -78,30 +81,36 @@ class _CurrentUserNameAndPhoto extends StatelessWidget {
             ],
           ),
         ),
-        Text(
-          _cubit.currentUser.name,
-          style: const TextStyle(
-            fontSize: 25.0,
-            fontWeight: FontWeight.bold,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          child: Text(
+            _cubit.currentUser.name,
+            style: const TextStyle(
+              fontSize: 25.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         const SizedBox(height: 15.0),
-        Row(
-          children: [
-            _MyTextButton(
-              text: 'Add to Story',
-            ),
-            const SizedBox(width: 15.0),
-            Container(
-              height: 40.0,
-              width: 45.0,
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(5.0),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          child: Row(
+            children: [
+              _MyTextButton(
+                text: 'Add to Story',
               ),
-              child: Icon(Icons.more_horiz),
-            )
-          ],
+              const SizedBox(width: 15.0),
+              Container(
+                height: 40.0,
+                width: 45.0,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                child: Icon(Icons.more_horiz),
+              )
+            ],
+          ),
         )
       ],
     );
@@ -169,8 +178,11 @@ class _CurrentUserIcons extends StatelessWidget {
 }
 
 class _FrendsBox extends StatelessWidget {
+  final FacebookCubit cubit;
+
   const _FrendsBox({
     Key? key,
+    required this.cubit,
   }) : super(key: key);
 
   @override
@@ -213,7 +225,25 @@ class _FrendsBox extends StatelessWidget {
             ),
           ],
         ),
-        // TODOADD SOME FRIENDS
+        const SizedBox(height: 15.0),
+        GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            crossAxisSpacing: 15.0,
+            mainAxisSpacing: 15.0,
+            childAspectRatio: (90.0 / 140.0),
+          ),
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 6,
+          itemBuilder: (context, index) {
+            return _friendItem(
+              userImage: cubit.onlineUsers[index].profileImageUrl,
+              userName: cubit.onlineUsers[index].name,
+            );
+          },
+        ),
+        const SizedBox(height: 15.0),
         Row(
           children: [
             _MyTextButton(
@@ -222,6 +252,35 @@ class _FrendsBox extends StatelessWidget {
               textColor: Colors.black,
             ),
           ],
+        ),
+      ],
+    );
+  }
+
+  Widget _friendItem({
+    required String userImage,
+    required String userName,
+  }) {
+    return Column(
+      children: [
+        Expanded(
+          child: Container(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              color: Colors.red,
+              image: DecorationImage(
+                image: CachedNetworkImageProvider(userImage),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 10.0),
+        Text(
+          userName,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );
