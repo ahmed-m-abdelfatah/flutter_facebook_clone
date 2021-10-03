@@ -23,6 +23,10 @@ Other
 
 ![Desktop](screenshots/screenshot1.jpeg)
 
-|                 Mobile                 |                 Mobile                 |
-| :------------------------------------: | :------------------------------------: |
-| ![Mobile](screenshots/screenshot2.png) | ![Mobile](screenshots/screenshot3.png) |
+|              Home Page               |              Home Page               |
+| :----------------------------------: | :----------------------------------: |
+| ![Home](screenshots/screenshot2.png) | ![Home](screenshots/screenshot3.png) |
+
+|                 profile                 |                 messenger                 |
+| :-------------------------------------: | :---------------------------------------: |
+| ![profile](screenshots/screenshot2.png) | ![messenger](screenshots/screenshot3.png) |

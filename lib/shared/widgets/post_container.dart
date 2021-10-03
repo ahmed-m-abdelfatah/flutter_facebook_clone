@@ -256,6 +256,8 @@ class _PostStats extends StatelessWidget {
   }
 
   void _commentBox(BuildContext context) {
+    bool notDesktop = !Responsive.isDesktop(context);
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -263,8 +265,12 @@ class _PostStats extends StatelessWidget {
           insetAnimationCurve: Curves.easeInOut,
           insetAnimationDuration: Duration(milliseconds: 200),
           child: Container(
-              height: MediaQuery.of(context).size.height * 0.98,
-              width: MediaQuery.of(context).size.width * 0.98,
+              height: notDesktop
+                  ? MediaQuery.of(context).size.height * 0.98
+                  : MediaQuery.of(context).size.height * 0.45,
+              width: notDesktop
+                  ? MediaQuery.of(context).size.width * 0.98
+                  : MediaQuery.of(context).size.width * 0.45,
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Column(

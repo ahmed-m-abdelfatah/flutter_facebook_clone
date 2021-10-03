@@ -232,6 +232,7 @@ class _FrendsBox extends StatelessWidget {
             crossAxisSpacing: 15.0,
             mainAxisSpacing: 15.0,
             childAspectRatio: (90.0 / 140.0),
+            // childAspectRatio: (itemWidth / itemHeight),
           ),
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
