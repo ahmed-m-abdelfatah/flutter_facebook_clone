@@ -21,12 +21,10 @@ Other
 
 ## Screenshots
 
-![Desktop](screenshots/screenshot1.jpeg)
-
-|              Home Page               |              Home Page               |
-| :----------------------------------: | :----------------------------------: |
-| ![Home](screenshots/screenshot2.png) | ![Home](screenshots/screenshot3.png) |
-
-|                 profile                 |                 messenger                 |
-| :-------------------------------------: | :---------------------------------------: |
-| ![profile](screenshots/screenshot2.png) | ![messenger](screenshots/screenshot3.png) |
+|                 Feeds                  |                  Profile                  |
+| :------------------------------------: | :---------------------------------------: |
+| ![Feeds](screenshots/screenshot1.jpeg) | ![Profile](screenshots/screenshot2.jpeg)  |
+|                 Feeds                  |                  Profile                  |
+| ![Feeds](screenshots/screenshot3.png)  |  ![Profile](screenshots/screenshot4.png)  |
+|                 Feeds                  |                 messenger                 |
+| ![Feeds](screenshots/screenshot5.png)  | ![messenger](screenshots/screenshot6.png) |
